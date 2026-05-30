@@ -4,11 +4,13 @@ import sqlite3
 import time
 
 try:
-    import psycopg2
-    from psycopg2.extras import RealDictCursor
-except ImportError:
-    psycopg2 = None
-    RealDictCursor = None
+    import psycopg
+    from psycopg.rows import dict_row
+    print("psycopg3 loaded successfully", flush=True)
+except Exception as error:
+    print(f"psycopg3 failed: {error}", flush=True)
+    psycopg = None
+    dict_row = None
 
 from datetime import datetime, timezone
 from urllib.parse import urlencode
@@ -234,15 +236,15 @@ def using_postgres():
 
 def get_db_connection():
     if using_postgres():
-        if psycopg2 is None:
+        if psycopg is None:
             raise RuntimeError(
-                "DATABASE_URL is configured, but psycopg2-binary is not installed. "
-                "Run: pip install psycopg2-binary"
+                "DATABASE_URL is configured, but psycopg is not installed or failed to load. "
+                "Run: pip install 'psycopg[binary]'"
             )
 
-        return psycopg2.connect(
+        return psycopg.connect(
             DATABASE_URL,
-            cursor_factory=RealDictCursor,
+            row_factory=dict_row,
         )
 
     database_dir = os.path.dirname(DATABASE_PATH)
