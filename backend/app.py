@@ -6,7 +6,10 @@ import time
 try:
     import psycopg2
     from psycopg2.extras import RealDictCursor
-except ImportError:
+    print("psycopg2 loaded successfully", flush=True)
+
+except Exception as e:
+    print(f"psycopg2 failed: {e}", flush=True)
     psycopg2 = None
     RealDictCursor = None
 
