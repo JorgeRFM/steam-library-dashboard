@@ -1,0 +1,16 @@
+# Local development
+STEAM_API_KEY=your_steam_api_key_here
+FLASK_SECRET_KEY=change-this-secret
+FRONTEND_URL=http://localhost:5173
+BACKEND_URL=http://localhost:5000
+DATABASE_PATH=data/steam_catalog.db
+CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
+
+# Render production will provide this from Render PostgreSQL.
+# Leave empty locally if you want SQLite.
+# DATABASE_URL=postgresql://user:password@host:5432/database
+
+# Privacy filters
+HIDDEN_APPIDS=
+FAMILY_IDS=76561198043475107,76561198388454419,76561198992948738,76561198138866290,76561198108693270,76561198782767176
+FAMILY_NAMES_JSON={"76561198043475107":"Diego","76561198388454419":"Charly","76561198992948738":"Didi","76561198138866290":"Family Member 4","76561198108693270":"Jorge","76561198782767176":"Family Member 6"}

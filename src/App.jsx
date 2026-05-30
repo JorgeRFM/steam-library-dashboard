@@ -1,12 +1,7 @@
 import { useMemo, useState } from "react";
-import staticGames from "./data/games.json";
 import "./App.css";
 
-const API_URL = "https://steam-library-dashboard.onrender.com";
-const CATALOG_VERSION = `${staticGames.length}-${
-  staticGames.map((game) => game.catalogUpdatedAt || "").sort().at(-1) || "catalog"
-}`;
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const INTEREST_OPTIONS = [
   "Undecided",
   "Play Next",
@@ -43,6 +38,7 @@ function App() {
   });
 
   const [isFetchingLibrary, setIsFetchingLibrary] = useState(false);
+  const [fetchProgress, setFetchProgress] = useState(null);
 
   const [sourceFilter, setSourceFilter] = useState("All");
   const [statusFilter, setStatusFilter] = useState("All");
@@ -56,10 +52,6 @@ function App() {
     const saved = localStorage.getItem("steamLibraryInterest");
     return saved ? JSON.parse(saved) : {};
   });
-
-  const catalogByAppId = useMemo(() => {
-    return Object.fromEntries(staticGames.map((game) => [game.appid, game]));
-  }, []);
 
   const totalHours = games.reduce(
     (sum, game) => sum + (Number(game.playtimeHours) || 0),
@@ -85,6 +77,14 @@ function App() {
         return (b.playtimeHours || 0) - (a.playtimeHours || 0);
       }
 
+      if (sortBy === "steamReviewPercent") {
+        return (b.steamReviewPercent || 0) - (a.steamReviewPercent || 0);
+      }
+
+      if (sortBy === "metacritic") {
+        return (Number(b.metacritic) || 0) - (Number(a.metacritic) || 0);
+      }
+
       return a.name.localeCompare(b.name);
     });
 
@@ -92,65 +92,63 @@ function App() {
     window.location.href = `${API_URL}/auth/steam`;
   }
 
-  async function fetchMyLibrary() {
-    if (!steamId) return;
+  function fetchMyLibrary() {
+    if (!steamId || isFetchingLibrary) return;
 
     setIsFetchingLibrary(true);
+    setGames([]);
+    setLibraryMeta(null);
+    setHasFetchedLibrary(false);
+    setSelectedGame(null);
 
-    try {
-      const response = await fetch(
-        `${API_URL}/api/owned-games?steamid=${steamId}`
+    if (libraryKey) localStorage.removeItem(libraryKey);
+    if (libraryMetaKey) localStorage.removeItem(libraryMetaKey);
+
+    setFetchProgress({
+      stage: "starting",
+      message: "Starting Steam library scan...",
+      percent: 0,
+      processedGames: 0,
+      totalGamesToProcess: 0,
+      currentMember: null,
+      currentGame: null,
+      cachedGames: 0,
+      newlyEnrichedGames: 0,
+    });
+
+    const streamUrl = `${API_URL}/api/library-enriched-stream?steamid=${steamId}`;
+    const eventSource = new EventSource(streamUrl);
+
+    eventSource.addEventListener("progress", (event) => {
+      const progress = JSON.parse(event.data);
+
+      setFetchProgress((current) => ({
+        ...current,
+        ...progress,
+      }));
+    });
+
+    eventSource.addEventListener("complete", (event) => {
+      const data = JSON.parse(event.data);
+      const userGames = (data.games || []).sort((a, b) =>
+        a.name.localeCompare(b.name)
       );
-
-      if (!response.ok) {
-        throw new Error("Could not fetch Steam library");
-      }
-
-      const data = await response.json();
-      const steamGames = data?.response?.games || [];
-
-      const userGames = steamGames
-        .map((steamGame) => {
-          const catalogGame = catalogByAppId[steamGame.appid] || {};
-          const playtimeHours = Math.round(
-            ((steamGame.playtime_forever || 0) / 60) * 10
-          ) / 10;
-
-          return {
-            ...catalogGame,
-            appid: steamGame.appid,
-            name: steamGame.name || catalogGame.name || "Unknown",
-            source: "Owned",
-            owner: "Me",
-            playtime: `${playtimeHours}h`,
-            playtimeHours,
-            status: playtimeHours === 0 ? "Backlog" : "Played",
-            type: catalogGame.type || "Unknown",
-            genres: catalogGame.genres || [],
-            categories: catalogGame.categories || [],
-            rating:
-              catalogGame.rating || catalogGame.steamReviewSummary || "Unknown",
-            steamReviewSummary: catalogGame.steamReviewSummary || "Unknown",
-            steamReviewPercent: catalogGame.steamReviewPercent || null,
-            steamReviewTotal: catalogGame.steamReviewTotal || null,
-            metacritic: catalogGame.metacritic || "Unknown",
-            avgBeat: catalogGame.avgBeat || "Unknown",
-            releaseDate: catalogGame.releaseDate || "Unknown",
-            storeUrl:
-              catalogGame.storeUrl ||
-              `https://store.steampowered.com/app/${steamGame.appid}`,
-            image:
-              catalogGame.image ||
-              `https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/${steamGame.appid}/header.jpg`,
-          };
-        })
-        .sort((a, b) => a.name.localeCompare(b.name));
 
       const meta = {
         steamId,
-        catalogVersion: CATALOG_VERSION,
+        catalogVersion: data.catalogVersion || data.totalGames || "enriched",
         lastFetched: new Date().toISOString(),
-        totalGames: userGames.length,
+        totalGames: data.totalGames || userGames.length,
+        ownedGames: data.ownedGames || 0,
+        familyGames: data.familyGames || 0,
+        familyEnabled: Boolean(data.familyEnabled),
+        familyName: data.familyName || null,
+        familyMembers: data.members || data.familyMembers || [],
+        failedFamilyMembers: (data.members || []).filter((member) => !member.loaded),
+        cachedGames: data.cachedGames || 0,
+        newlyEnrichedGames: data.newlyEnrichedGames || 0,
+        hiddenGamesConfigured: data.hiddenGamesConfigured || 0,
+        privateGamesFiltered: data.privateGamesFiltered || 0,
       };
 
       localStorage.setItem(libraryKey, JSON.stringify(userGames));
@@ -160,12 +158,30 @@ function App() {
       setLibraryMeta(meta);
       setHasFetchedLibrary(true);
       setSelectedGame(null);
-    } catch (error) {
-      console.error(error);
-      alert("Could not fetch your Steam library. Your game details may be private.");
-    } finally {
+      setFetchProgress({
+        stage: "complete",
+        message: `Done. Loaded ${userGames.length} unique games.`,
+        percent: 100,
+        processedGames: data.cachedGames + data.newlyEnrichedGames,
+        totalGamesToProcess: data.cachedGames + data.newlyEnrichedGames,
+        cachedGames: data.cachedGames || 0,
+        newlyEnrichedGames: data.newlyEnrichedGames || 0,
+      });
       setIsFetchingLibrary(false);
-    }
+      eventSource.close();
+    });
+
+    eventSource.addEventListener("error", (event) => {
+      console.error("Progress stream failed", event);
+      setFetchProgress((current) => ({
+        ...current,
+        stage: "error",
+        message:
+          "The progress connection failed. Check the Flask console for the exact error.",
+      }));
+      setIsFetchingLibrary(false);
+      eventSource.close();
+    });
   }
 
   function updateInterest(appid, value) {
@@ -207,6 +223,10 @@ function App() {
         steamReviewPercent: game.steamReviewPercent,
         metacritic: game.metacritic,
         releaseDate: game.releaseDate,
+        source: game.source,
+        owner: game.owner,
+        ownerSteamId: game.ownerSteamId,
+        familyOwners: game.familyOwners || [],
         storeUrl: game.storeUrl,
       }))
       .filter((game) => game.interest !== "Undecided");
@@ -225,52 +245,180 @@ function App() {
     URL.revokeObjectURL(url);
   }
 
-  function getRecommendationScore(game) {
+  function parseHours(value) {
+    if (value === null || value === undefined) return null;
+
+    if (typeof value === "number") return value;
+
+    const match = String(value).match(/[\d.]+/);
+    return match ? Number(match[0]) : null;
+  }
+
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function buildPreferenceProfile() {
+    const genreWeights = {};
+    const categoryWeights = {};
+
+    games.forEach((game) => {
+      const interest = interestByGame[game.appid] || "Undecided";
+      const playtimeHours = Number(game.playtimeHours) || 0;
+
+      let weight = 0;
+
+      if (interest === "Play Next") weight += 8;
+      if (interest === "Interested") weight += 5;
+      if (interest === "Maybe") weight += 2;
+      if (interest === "Completed") weight += 4;
+      if (interest === "Not Right Now") weight -= 1;
+      if (interest === "Not Interested") weight -= 8;
+
+      if (playtimeHours >= 50) weight += 5;
+      else if (playtimeHours >= 20) weight += 3;
+      else if (playtimeHours >= 5) weight += 1;
+
+      (game.genres || []).forEach((genre) => {
+        genreWeights[genre] = (genreWeights[genre] || 0) + weight;
+      });
+
+      (game.categories || []).forEach((category) => {
+        categoryWeights[category] = (categoryWeights[category] || 0) + weight * 0.35;
+      });
+    });
+
+    return { genreWeights, categoryWeights };
+  }
+
+  function getRecommendationScore(game, profile) {
     const interest = interestByGame[game.appid] || "Undecided";
     const metacritic = Number(game.metacritic) || 0;
     const steamReviewPercent = Number(game.steamReviewPercent) || 0;
+    const steamReviewTotal = Number(game.steamReviewTotal) || 0;
     const playtimeHours = Number(game.playtimeHours) || 0;
+    const avgBeatHours = parseHours(game.avgBeat);
 
     if (interest === "Not Interested" || interest === "Completed") return -999;
 
     let score = 0;
+    const reasons = [];
 
-    if (interest === "Play Next") score += 50;
-    if (interest === "Interested") score += 30;
-    if (interest === "Maybe") score += 10;
-    if (game.status === "Backlog") score += 15;
+    if (interest === "Play Next") {
+      score += 45;
+      reasons.push("you marked it as Play Next");
+    } else if (interest === "Interested") {
+      score += 30;
+      reasons.push("you marked it as Interested");
+    } else if (interest === "Maybe") {
+      score += 15;
+      reasons.push("you marked it as Maybe");
+    }
 
-    if (steamReviewPercent >= 90) score += 15;
-    else if (steamReviewPercent >= 80) score += 10;
-    else if (steamReviewPercent >= 70) score += 5;
+    if (game.status === "Backlog") {
+      score += 18;
+      reasons.push("it is still in your backlog");
+    } else if (playtimeHours > 0 && playtimeHours < 2) {
+      score += 8;
+      reasons.push("you barely started it");
+    } else if (playtimeHours >= 20) {
+      score -= 18;
+    }
 
-    if (metacritic >= 85) score += 10;
-    else if (metacritic >= 75) score += 5;
+    const genreMatch = (game.genres || []).reduce((sum, genre) => {
+      return sum + Math.max(0, profile.genreWeights[genre] || 0);
+    }, 0);
 
-    if (playtimeHours > 20) score -= 20;
+    const categoryMatch = (game.categories || []).reduce((sum, category) => {
+      return sum + Math.max(0, profile.categoryWeights[category] || 0);
+    }, 0);
 
-    return score;
+    const preferenceScore = clamp(genreMatch + categoryMatch, 0, 35);
+
+    if (preferenceScore >= 20) reasons.push("it matches genres you tend to like");
+    else if (preferenceScore >= 8) reasons.push("it partially matches your taste");
+
+    score += preferenceScore;
+
+    if (steamReviewPercent >= 95 && steamReviewTotal >= 1000) {
+      score += 18;
+      reasons.push("Steam reviews are excellent");
+    } else if (steamReviewPercent >= 90) {
+      score += 14;
+      reasons.push("Steam reviews are very strong");
+    } else if (steamReviewPercent >= 80) {
+      score += 9;
+    } else if (steamReviewPercent > 0 && steamReviewPercent < 65) {
+      score -= 10;
+    }
+
+    if (metacritic >= 90) {
+      score += 14;
+      reasons.push("Metacritic is excellent");
+    } else if (metacritic >= 80) {
+      score += 9;
+    } else if (metacritic > 0 && metacritic < 65) {
+      score -= 8;
+    }
+
+    if (avgBeatHours !== null) {
+      if (avgBeatHours <= 6) {
+        score += 10;
+        reasons.push("it is short enough to finish soon");
+      } else if (avgBeatHours <= 15) {
+        score += 6;
+      } else if (avgBeatHours >= 60) {
+        score -= 8;
+        reasons.push("it is a long commitment");
+      }
+    }
+
+    return {
+      score: Math.round(score),
+      reasons: reasons.slice(0, 3),
+    };
   }
 
   function recommendGame() {
+    const profile = buildPreferenceProfile();
+
     const candidates = games
-      .map((game) => ({
-        ...game,
-        recommendationScore: getRecommendationScore(game),
-      }))
+      .map((game) => {
+        const recommendation = getRecommendationScore(game, profile);
+
+        return {
+          ...game,
+          recommendationScore: recommendation.score,
+          recommendationReasons: recommendation.reasons,
+        };
+      })
       .filter((game) => game.recommendationScore > 0)
       .sort((a, b) => b.recommendationScore - a.recommendationScore);
 
     if (candidates.length === 0) {
-      alert("Mark some games as 🔥 Play Next, 👍 Interested, or 🤔 Maybe first.");
+      alert("Mark some games as 🔥 Play Next, 👍 Interested, 🤔 Maybe, or play a few games first.");
       return;
     }
 
-    const topCandidates = candidates.slice(0, 10);
-    const randomGame =
-      topCandidates[Math.floor(Math.random() * topCandidates.length)];
+    const topCandidates = candidates.slice(0, 8);
+    const totalWeight = topCandidates.reduce(
+      (sum, game) => sum + game.recommendationScore,
+      0
+    );
 
-    setSelectedGame(randomGame);
+    let roll = Math.random() * totalWeight;
+    let selected = topCandidates[0];
+
+    for (const game of topCandidates) {
+      roll -= game.recommendationScore;
+
+      if (roll <= 0) {
+        selected = game;
+        break;
+      }
+    }
+
+    setSelectedGame(selected);
     setShowCategories(false);
   }
 
@@ -301,7 +449,7 @@ function App() {
     <main className="page">
       <header className="hero">
         <h1>My Steam Library</h1>
-        <p>Owned games, ratings, genres and time to beat.</p>
+        <p>Owned games, Steam Family games, ratings, genres and time to beat.</p>
       </header>
 
       <section className="login-panel">
@@ -318,17 +466,125 @@ function App() {
           </p>
         )}
 
+        {libraryMeta && (
+          <p>
+            Cached: <strong>{libraryMeta.cachedGames || 0}</strong> | Newly
+            enriched: <strong>{libraryMeta.newlyEnrichedGames || 0}</strong>
+          </p>
+        )}
+
+        {libraryMeta?.familyEnabled && (
+          <p>
+            Family enabled: <strong>{libraryMeta.familyName}</strong> | Owned: {" "}
+            <strong>{libraryMeta.ownedGames || 0}</strong> | Shared: {" "}
+            <strong>{libraryMeta.familyGames || 0}</strong>
+          </p>
+        )}
+
+        {libraryMeta?.privateGamesFiltered > 0 && (
+          <p>
+            Private games hidden from public family view: {" "}
+            <strong>{libraryMeta.privateGamesFiltered}</strong>
+          </p>
+        )}
+
+        {libraryMeta?.failedFamilyMembers?.length > 0 && (
+          <p>
+            Could not load {libraryMeta.failedFamilyMembers.length} family member(s).
+            They may have private libraries.
+          </p>
+        )}
+
         <button
           className="steam-login-button"
           onClick={fetchMyLibrary}
           disabled={isFetchingLibrary}
         >
           {isFetchingLibrary
-            ? "Fetching..."
+            ? "Fetching Steam Family..."
             : hasFetchedLibrary
               ? "Refresh Library"
               : "Fetch My Library"}
         </button>
+
+        {fetchProgress && (
+          <div
+            style={{
+              marginTop: "1rem",
+              padding: "1rem",
+              borderRadius: "16px",
+              background: "rgba(255, 255, 255, 0.06)",
+              border: "1px solid rgba(255, 255, 255, 0.12)",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: "1rem",
+                marginBottom: "0.65rem",
+              }}
+            >
+              <strong>
+                {fetchProgress.stage === "complete"
+                  ? "Library ready"
+                  : fetchProgress.stage === "error"
+                    ? "Something failed"
+                    : "Loading library"}
+              </strong>
+              <strong>{fetchProgress.percent || 0}%</strong>
+            </div>
+
+            <div
+              style={{
+                width: "100%",
+                height: "12px",
+                borderRadius: "999px",
+                overflow: "hidden",
+                background: "rgba(255, 255, 255, 0.12)",
+              }}
+            >
+              <div
+                style={{
+                  width: `${fetchProgress.percent || 0}%`,
+                  height: "100%",
+                  borderRadius: "999px",
+                  background: "linear-gradient(90deg, #66c0f4, #a2d2ff)",
+                  transition: "width 0.25s ease",
+                }}
+              />
+            </div>
+
+            <p style={{ marginTop: "0.75rem", marginBottom: 0 }}>
+              {fetchProgress.message}
+            </p>
+
+            {(fetchProgress.currentMember || fetchProgress.currentGame) && (
+              <p style={{ marginTop: "0.35rem", marginBottom: 0, opacity: 0.8 }}>
+                {fetchProgress.currentMember && (
+                  <>
+                    Member: <strong>{fetchProgress.currentMember}</strong>
+                  </>
+                )}
+                {fetchProgress.currentGame && (
+                  <>
+                    {fetchProgress.currentMember ? " · " : ""}
+                    Game: <strong>{fetchProgress.currentGame}</strong>
+                  </>
+                )}
+              </p>
+            )}
+
+            {fetchProgress.totalGamesToProcess > 0 && (
+              <p style={{ marginTop: "0.35rem", marginBottom: 0, opacity: 0.8 }}>
+                Processed {fetchProgress.processedGames || 0} of{" "}
+                {fetchProgress.totalGamesToProcess} entries · Cache hits:{" "}
+                {fetchProgress.cachedGames || 0} · Newly enriched:{" "}
+                {fetchProgress.newlyEnrichedGames || 0}
+              </p>
+            )}
+          </div>
+        )}
       </section>
 
       {!hasFetchedLibrary && (
@@ -343,8 +599,14 @@ function App() {
           <section className="summary">
             <div>
               <strong>{games.length}</strong>
-              <span>Games</span>
+              <span>Total Games</span>
             </div>
+            {libraryMeta?.familyEnabled && (
+              <div>
+                <strong>{libraryMeta.familyGames || 0}</strong>
+                <span>Family Shared</span>
+              </div>
+            )}
             <div>
               <strong>{playedCount}</strong>
               <span>Played</span>
@@ -402,6 +664,8 @@ function App() {
               <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
                 <option value="name">Sort by Name</option>
                 <option value="playtime">Sort by Playtime</option>
+                <option value="steamReviewPercent">Sort by Steam Reviews</option>
+                <option value="metacritic">Sort by Metacritic</option>
               </select>
 
               <button className="export-button" onClick={exportInterestList}>
@@ -451,6 +715,7 @@ function App() {
                       <span>Beat: {game.avgBeat}</span>
                       <span>Played: {game.playtime}</span>
                       <span>{game.source}</span>
+                      {game.owner && <span>Owner: {game.owner}</span>}
                     </div>
                   </div>
                 </article>
@@ -483,6 +748,14 @@ function App() {
               </p>
             )}
 
+            {selectedGame.recommendationReasons?.length > 0 && (
+              <ul className="recommendation-reasons">
+                {selectedGame.recommendationReasons.map((reason) => (
+                  <li key={reason}>{reason}</li>
+                ))}
+              </ul>
+            )}
+
             <label className="field">
               Interest
               <select
@@ -502,6 +775,12 @@ function App() {
             <div className="detail-list">
               <p>
                 <strong>Status:</strong> {selectedGame.status}
+              </p>
+              <p>
+                <strong>Source:</strong> {selectedGame.source || "Owned"}
+              </p>
+              <p>
+                <strong>Owner:</strong> {selectedGame.owner || "Me"}
               </p>
               <p>
                 <strong>Played:</strong> {selectedGame.playtime}
@@ -528,6 +807,13 @@ function App() {
                 <strong>HowLongToBeat:</strong>{" "}
                 {selectedGame.avgBeat || "Unknown"}
               </p>
+
+              {selectedGame.familyOwners?.length > 1 && (
+                <p>
+                  <strong>Available from:</strong>{" "}
+                  {selectedGame.familyOwners.map((owner) => owner.name).join(", ")}
+                </p>
+              )}
 
               <button
                 className="toggle-button"
