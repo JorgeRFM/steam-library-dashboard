@@ -607,7 +607,12 @@ def is_hidden_appid(appid):
 
 
 def is_hidden_game_name(name):
-    return normalize_game_name(name) in HIDDEN_GAME_NAMES
+    normalized_name = normalize_game_name(name)
+
+    return any(
+        hidden_name in normalized_name or normalized_name in hidden_name
+        for hidden_name in HIDDEN_GAME_NAMES
+    )
 
 
 def is_globally_hidden_game(game):
