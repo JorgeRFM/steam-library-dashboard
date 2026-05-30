@@ -1,0 +1,358 @@
+/* =========================
+   Base
+========================= */
+
+body {
+  margin: 0;
+  background: #0b141f;
+  color: #c7d5e0;
+  font-family: Arial, sans-serif;
+}
+
+.page {
+  padding: 32px;
+}
+
+/* =========================
+   Header
+========================= */
+
+.hero {
+  background: linear-gradient(135deg, #1b2838, #0b141f);
+  padding: 36px 28px;
+  border-radius: 14px;
+  border: 1px solid rgba(102, 192, 244, 0.2);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  color: white;
+  font-size: 52px;
+  margin: 0 0 12px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 18px;
+  color: #c7d5e0;
+}
+
+/* =========================
+   Summary Cards
+========================= */
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.summary div {
+  background: #16202d;
+  border: 1px solid #2a475e;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+}
+
+.summary strong {
+  display: block;
+  color: white;
+  font-size: 26px;
+  margin-bottom: 4px;
+}
+
+.summary span {
+  color: #8f98a0;
+}
+
+/* =========================
+   Toolbar / Filters
+========================= */
+
+.export-button {
+  background: #66c0f4;
+  color: #0b141f;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.export-button:hover {
+  filter: brightness(1.1);
+}
+
+.toolbar {
+  margin: 24px 0;
+}
+
+.search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  margin-top: 20px;
+  border-radius: 8px;
+  border: 1px solid #2a475e;
+  background: #1b2838;
+  color: white;
+  font-size: 16px;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.controls select {
+  background: #1b2838;
+  color: #c7d5e0;
+  border: 1px solid #2a475e;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.counter {
+  color: #8f98a0;
+  margin-top: 12px;
+}
+
+.export-button {
+  background: #66c0f4;
+  color: #0b141f;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.export-button:hover {
+  filter: brightness(1.1);
+}
+
+.recommend-button {
+  background: #8bc34a;
+  color: #101822;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.recommend-button:hover {
+  filter: brightness(1.1);
+}
+
+/* =========================
+   Game Grid / Cards
+========================= */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: linear-gradient(135deg, #16202d, #101822);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.game-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.content {
+  padding: 16px;
+}
+
+.content h2 {
+  margin: 0 0 6px;
+  color: white;
+}
+
+.content p {
+  margin: 0 0 14px;
+  color: #8f98a0;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-top span {
+  background: #2a475e;
+  color: #c7d5e0;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stats span {
+  background: #1b2838;
+  color: #66c0f4;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+/* =========================
+   Drawer / Details Panel
+========================= */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  z-index: 90;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 420px;
+  max-width: 90vw;
+  height: 100vh;
+  background: #101822;
+  border-left: 1px solid #2a475e;
+  box-shadow: -12px 0 30px rgba(0, 0, 0, 0.5);
+  padding: 24px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: #1b2838;
+  color: #c7d5e0;
+  border: 1px solid #2a475e;
+  border-radius: 8px;
+  font-size: 28px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+}
+
+.drawer-image {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+
+.drawer h2 {
+  color: white;
+  margin: 0 0 18px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+  color: #8f98a0;
+}
+
+.field select {
+  background: #1b2838;
+  color: #c7d5e0;
+  border: 1px solid #2a475e;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.detail-list {
+  background: #0b141f;
+  border: 1px solid #2a475e;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.detail-list p {
+  margin: 0 0 12px;
+}
+
+.toggle-button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #2a475e;
+  background: #1b2838;
+  color: #66c0f4;
+  cursor: pointer;
+}
+
+.categories-text {
+  margin-top: 12px;
+  color: #c7d5e0;
+  line-height: 1.5;
+}
+
+.steam-link {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #66c0f4;
+  color: #0b141f;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 640px) {
+  .page {
+    padding: 18px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .drawer {
+    width: 100vw;
+    max-width: 100vw;
+  }
+}

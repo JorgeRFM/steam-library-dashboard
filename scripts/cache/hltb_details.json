@@ -1,0 +1,1970 @@
+{
+  "counter-strike": {
+    "hltbId": 1953,
+    "hltbName": "Counter-Strike",
+    "mainStory": 25.68,
+    "mainExtra": 91.26,
+    "completionist": 774.77,
+    "similarity": 1.0
+  },
+  "team fortress classic": {
+    "hltbId": 9634,
+    "hltbName": "Team Fortress Classic",
+    "mainStory": 15.95,
+    "mainExtra": 20.5,
+    "completionist": 20.5,
+    "similarity": 1.0
+  },
+  "day of defeat": {
+    "hltbId": 2282,
+    "hltbName": "Day of Defeat",
+    "mainStory": 5.88,
+    "mainExtra": 24.66,
+    "completionist": 80.9,
+    "similarity": 1.0
+  },
+  "deathmatch classic": {
+    "hltbId": 2373,
+    "hltbName": "Deathmatch Classic",
+    "mainStory": 1.21,
+    "mainExtra": 8.0,
+    "completionist": 12.0,
+    "similarity": 1.0
+  },
+  "half-life: opposing force": {
+    "hltbId": 4256,
+    "hltbName": "Half-Life: Opposing Force",
+    "mainStory": 5.22,
+    "mainExtra": 6.29,
+    "completionist": 7.14,
+    "similarity": 1.0
+  },
+  "ricochet": {
+    "hltbId": 7799,
+    "hltbName": "Ricochet",
+    "mainStory": 37.66,
+    "mainExtra": 47.21,
+    "completionist": 177.96,
+    "similarity": 1.0
+  },
+  "half-life": {
+    "hltbId": 4247,
+    "hltbName": "Half-Life",
+    "mainStory": 11.96,
+    "mainExtra": 14.09,
+    "completionist": 15.38,
+    "similarity": 1.0
+  },
+  "counter-strike: condition zero": {
+    "hltbId": 1955,
+    "hltbName": "Counter-Strike: Condition Zero",
+    "mainStory": 3.79,
+    "mainExtra": 12.9,
+    "completionist": 108.31,
+    "similarity": 1.0
+  },
+  "counter-strike: condition zero deleted scenes": {
+    "hltbId": 1956,
+    "hltbName": "Counter-Strike: Condition Zero Deleted Scenes",
+    "mainStory": 6.17,
+    "mainExtra": 7.22,
+    "completionist": 8.17,
+    "similarity": 1.0
+  },
+  "half-life: blue shift": {
+    "hltbId": 4254,
+    "hltbName": "Half-Life: Blue Shift",
+    "mainStory": 3.06,
+    "mainExtra": 3.39,
+    "completionist": 3.65,
+    "similarity": 1.0
+  },
+  "half-life 2": {
+    "hltbId": 4248,
+    "hltbName": "Half-Life 2",
+    "mainStory": 12.89,
+    "mainExtra": 15.61,
+    "completionist": 19.88,
+    "similarity": 1.0
+  },
+  "counter-strike: source": {
+    "hltbId": 1958,
+    "hltbName": "Counter-Strike: Source",
+    "mainStory": 67.08,
+    "mainExtra": 113.59,
+    "completionist": 411.22,
+    "similarity": 1.0
+  },
+  "half-life: source": {
+    "hltbId": 4257,
+    "hltbName": "Half-Life: Source",
+    "mainStory": 11.15,
+    "mainExtra": 13.13,
+    "completionist": 14.12,
+    "similarity": 1.0
+  },
+  "day of defeat: source": {
+    "hltbId": 2284,
+    "hltbName": "Day of Defeat: Source",
+    "mainStory": 8.31,
+    "mainExtra": 10.0,
+    "completionist": 15.4,
+    "similarity": 1.0
+  },
+  "half-life 2: deathmatch": {
+    "hltbId": 4249,
+    "hltbName": "Half-Life 2: Deathmatch",
+    "mainStory": 2.42,
+    "mainExtra": 9.76,
+    "completionist": 21.55,
+    "similarity": 1.0
+  },
+  "half-life deathmatch: source": {
+    "hltbId": 4253,
+    "hltbName": "Half-Life Deathmatch: Source",
+    "mainStory": 2.5,
+    "mainExtra": 2.67,
+    "completionist": 3.33,
+    "similarity": 1.0
+  },
+  "portal": {
+    "hltbId": 7230,
+    "hltbName": "Portal",
+    "mainStory": 3.12,
+    "mainExtra": 5.25,
+    "completionist": 10.43,
+    "similarity": 1.0
+  },
+  "team fortress 2": {
+    "hltbId": 9632,
+    "hltbName": "Team Fortress 2",
+    "mainStory": 290.86,
+    "mainExtra": 591.35,
+    "completionist": 2346.99,
+    "similarity": 1.0
+  },
+  "left 4 dead": {
+    "hltbId": 5209,
+    "hltbName": "Left 4 Dead",
+    "mainStory": 6.96,
+    "mainExtra": 18.87,
+    "completionist": 58.84,
+    "similarity": 1.0
+  },
+  "left 4 dead 2": {
+    "hltbId": 5212,
+    "hltbName": "Left 4 Dead 2",
+    "mainStory": 10.2,
+    "mainExtra": 27.79,
+    "completionist": 61.36,
+    "similarity": 1.0
+  },
+  "dota 2": {
+    "hltbId": 2721,
+    "hltbName": "Dota 2",
+    "mainStory": 746.81,
+    "mainExtra": 1140.45,
+    "completionist": 2332.72,
+    "similarity": 1.0
+  },
+  "portal 2": {
+    "hltbId": 7231,
+    "hltbName": "Portal 2",
+    "mainStory": 8.53,
+    "mainExtra": 13.72,
+    "completionist": 22.53,
+    "similarity": 1.0
+  },
+  "counter-strike 2": {
+    "hltbId": 1957,
+    "hltbName": "Counter-Strike 2",
+    "mainStory": 147.71,
+    "mainExtra": 373.06,
+    "completionist": 752.47,
+    "similarity": 1.0
+  },
+  "insaniquarium! deluxe": {
+    "hltbId": 4699,
+    "hltbName": "Insaniquarium",
+    "mainStory": 4.15,
+    "mainExtra": 6.69,
+    "completionist": 15.89,
+    "similarity": 1.0
+  },
+  "garry's mod": {
+    "hltbId": 3847,
+    "hltbName": "Garry's Mod",
+    "mainStory": 51.41,
+    "mainExtra": 279.02,
+    "completionist": 553.98,
+    "similarity": 1.0
+  },
+  "star wars™ republic commando": {
+    "hltbId": 9119,
+    "hltbName": "Star Wars: Republic Commando",
+    "mainStory": 8.72,
+    "mainExtra": 9.92,
+    "completionist": 10.2,
+    "similarity": 0.7636363636363637
+  },
+  "star wars™ jedi knight: jedi academy™": {
+    "hltbId": 9087,
+    "hltbName": "Star Wars Jedi Knight: Jedi Academy",
+    "mainStory": 10.04,
+    "mainExtra": 11.38,
+    "completionist": 13.97,
+    "similarity": 0.8285714285714286
+  },
+  "tomb raider: legend": {
+    "hltbId": 10477,
+    "hltbName": "Tomb Raider: Legend",
+    "mainStory": 7.2,
+    "mainExtra": 9.06,
+    "completionist": 15.06,
+    "similarity": 1.0
+  },
+  "bioshock": {
+    "hltbId": 1065,
+    "hltbName": "BioShock",
+    "mainStory": 12.11,
+    "mainExtra": 15.63,
+    "completionist": 23.23,
+    "similarity": 1.0
+  },
+  "tomb raider: anniversary": {
+    "hltbId": 10476,
+    "hltbName": "Tomb Raider: Anniversary",
+    "mainStory": 12.19,
+    "mainExtra": 15.2,
+    "completionist": 20.6,
+    "similarity": 1.0
+  },
+  "tomb raider: underworld": {
+    "hltbId": 10482,
+    "hltbName": "Tomb Raider: Underworld",
+    "mainStory": 9.87,
+    "mainExtra": 12.17,
+    "completionist": 18.81,
+    "similarity": 1.0
+  },
+  "bioshock 2": {
+    "hltbId": 1066,
+    "hltbName": "BioShock 2",
+    "mainStory": 10.56,
+    "mainExtra": 14.42,
+    "completionist": 23.69,
+    "similarity": 1.0
+  },
+  "bioshock infinite": {
+    "hltbId": 1068,
+    "hltbName": "BioShock Infinite",
+    "mainStory": 11.54,
+    "mainExtra": 16.1,
+    "completionist": 28.5,
+    "similarity": 1.0
+  },
+  "borderlands goty": {
+    "hltbId": 1280,
+    "hltbName": "Borderlands: Game of the Year",
+    "mainStory": 20.52,
+    "mainExtra": 35.87,
+    "completionist": 74.31,
+    "similarity": 0.7619047619047619
+  },
+  "prince of persia: warrior within": {
+    "hltbId": 7299,
+    "hltbName": "Prince of Persia: Warrior Within",
+    "mainStory": 12.23,
+    "mainExtra": 14.94,
+    "completionist": 17.19,
+    "similarity": 1.0
+  },
+  "prince of persia: the two thrones": {
+    "hltbId": 7298,
+    "hltbName": "Prince of Persia: The Two Thrones",
+    "mainStory": 9.82,
+    "mainExtra": 10.52,
+    "completionist": 12.21,
+    "similarity": 1.0
+  },
+  "prince of persia: the sands of time": {
+    "hltbId": 7297,
+    "hltbName": "Prince of Persia: The Sands of Time",
+    "mainStory": 8.67,
+    "mainExtra": 9.72,
+    "completionist": 10.36,
+    "similarity": 1.0
+  },
+  "prince of persia": {
+    "hltbId": 7288,
+    "hltbName": "Prince of Persia",
+    "mainStory": 11.43,
+    "mainExtra": 14.17,
+    "completionist": 17.38,
+    "similarity": 1.0
+  },
+  "the witcher: enhanced edition": {
+    "hltbId": 10267,
+    "hltbName": "The Witcher",
+    "mainStory": 35.25,
+    "mainExtra": 45.98,
+    "completionist": 63.74,
+    "similarity": 0.9565217391304348
+  },
+  "the witcher 2: assassins of kings enhanced edition": {
+    "hltbId": 10268,
+    "hltbName": "The Witcher 2: Assassins of Kings",
+    "mainStory": 24.12,
+    "mainExtra": 34.64,
+    "completionist": 56.58,
+    "similarity": 1.0
+  },
+  "dc universe online": {
+    "hltbId": 2292,
+    "hltbName": "DC Universe Online",
+    "mainStory": 74.77,
+    "mainExtra": 115.42,
+    "completionist": 222.69,
+    "similarity": 1.0
+  },
+  "tales of monkey island: chapter 1 - launch of the screaming narwhal": {
+    "hltbId": 9595,
+    "hltbName": "Tales of Monkey Island: Chapter 1 - Launch of the Screaming Narwhal",
+    "mainStory": 3.16,
+    "mainExtra": 3.31,
+    "completionist": 3.32,
+    "similarity": 1.0
+  },
+  "tales of monkey island: chapter 2 - the siege of spinner cay ": {
+    "hltbId": 9596,
+    "hltbName": "Tales of Monkey Island: Chapter 2 - The Siege of Spinner Cay",
+    "mainStory": 2.63,
+    "mainExtra": 2.81,
+    "completionist": 2.96,
+    "similarity": 1.0
+  },
+  "tales of monkey island: chapter 3 - lair of the leviathan ": {
+    "hltbId": 9597,
+    "hltbName": "Tales of Monkey Island: Chapter 3 - Lair of the Leviathan",
+    "mainStory": 2.94,
+    "mainExtra": 3.23,
+    "completionist": 3.26,
+    "similarity": 1.0
+  },
+  "tales of monkey island: chapter 4 - the trial and execution of guybrush threepwood ": {
+    "hltbId": 9598,
+    "hltbName": "Tales of Monkey Island: Chapter 4 - The Trial and Execution of Guybrush Threepwood",
+    "mainStory": 3.07,
+    "mainExtra": 3.51,
+    "completionist": 4.04,
+    "similarity": 1.0
+  },
+  "tales of monkey island: chapter 5 - rise of the pirate god": {
+    "hltbId": 9599,
+    "hltbName": "Tales of Monkey Island: Chapter 5 - Rise of the Pirate God",
+    "mainStory": 2.99,
+    "mainExtra": 3.29,
+    "completionist": 3.52,
+    "similarity": 1.0
+  },
+  "legoⓡ indiana jones™: the original adventures": {
+    "hltbId": 5253,
+    "hltbName": "LEGO Indiana Jones: The Original Adventures",
+    "mainStory": 9.11,
+    "mainExtra": 14.0,
+    "completionist": 19.37,
+    "similarity": 1.0
+  },
+  "the secret of monkey island: special edition": {
+    "hltbId": 10162,
+    "hltbName": "The Secret of Monkey Island",
+    "mainStory": 6.66,
+    "mainExtra": 7.3,
+    "completionist": 7.6,
+    "similarity": 1.0
+  },
+  "star wars™ knights of the old republic™": {
+    "hltbId": 9111,
+    "hltbName": "Star Wars: Knights of the Old Republic",
+    "mainStory": 29.06,
+    "mainExtra": 36.57,
+    "completionist": 48.49,
+    "similarity": 0.8266666666666667
+  },
+  "star wars™: the force unleashed™ ultimate sith edition": {
+    "hltbId": 19795,
+    "hltbName": "Star Wars: The Force Unleashed - Ultimate Sith Edition",
+    "mainStory": 8.07,
+    "mainExtra": 10.92,
+    "completionist": 16.82,
+    "similarity": 0.8679245283018868
+  },
+  "lego® star wars™: the complete saga": {
+    "hltbId": 5263,
+    "hltbName": "LEGO Star Wars: The Complete Saga",
+    "mainStory": 13.2,
+    "mainExtra": 23.32,
+    "completionist": 40.42,
+    "similarity": 1.0
+  },
+  "lego® indiana jones™ 2: the adventure continues": {
+    "hltbId": 5252,
+    "hltbName": "LEGO Indiana Jones 2: The Adventure Continues",
+    "mainStory": 9.37,
+    "mainExtra": 15.91,
+    "completionist": 20.58,
+    "similarity": 1.0
+  },
+  "monkey island 2: special edition": {
+    "hltbId": 6136,
+    "hltbName": "Monkey Island 2: LeChuck's Revenge",
+    "mainStory": 7.06,
+    "mainExtra": 7.9,
+    "completionist": 7.99,
+    "similarity": 1.0
+  },
+  "star wars™ empire at war: gold pack": {},
+  "lego® star wars™ iii: the clone wars™": {
+    "hltbId": 5262,
+    "hltbName": "LEGO Star Wars III: The Clone Wars",
+    "mainStory": 9.1,
+    "mainExtra": 14.95,
+    "completionist": 29.26,
+    "similarity": 1.0
+  },
+  "prince of persia: the forgotten sands": {
+    "hltbId": 7296,
+    "hltbName": "Prince of Persia: The Forgotten Sands",
+    "mainStory": 7.87,
+    "mainExtra": 8.94,
+    "completionist": 10.65,
+    "similarity": 1.0
+  },
+  "sega mega drive & genesis classics": {},
+  "batman: arkham asylum goty edition": {
+    "hltbId": 881,
+    "hltbName": "Batman: Arkham Asylum",
+    "mainStory": 11.98,
+    "mainExtra": 16.39,
+    "completionist": 25.31,
+    "similarity": 1.0
+  },
+  "fallout": {
+    "hltbId": 3338,
+    "hltbName": "Fallout",
+    "mainStory": 16.21,
+    "mainExtra": 22.93,
+    "completionist": 32.07,
+    "similarity": 1.0
+  },
+  "borderlands 2": {
+    "hltbId": 1274,
+    "hltbName": "Borderlands 2",
+    "mainStory": 30.07,
+    "mainExtra": 54.83,
+    "completionist": 130.23,
+    "similarity": 1.0
+  },
+  "amnesia: the dark descent": {
+    "hltbId": 440,
+    "hltbName": "Amnesia: The Dark Descent",
+    "mainStory": 7.95,
+    "mainExtra": 9.08,
+    "completionist": 11.71,
+    "similarity": 1.0
+  },
+  "terraria": {
+    "hltbId": 9705,
+    "hltbName": "Terraria",
+    "mainStory": 51.79,
+    "mainExtra": 92.08,
+    "completionist": 205.2,
+    "similarity": 1.0
+  },
+  "project zomboid": {
+    "hltbId": 7359,
+    "hltbName": "Project Zomboid",
+    "mainStory": 60.34,
+    "mainExtra": 157.38,
+    "completionist": 433.12,
+    "similarity": 1.0
+  },
+  "neverwinter": {
+    "hltbId": 6514,
+    "hltbName": "Neverwinter",
+    "mainStory": 49.88,
+    "mainExtra": 103.88,
+    "completionist": 313.84,
+    "similarity": 1.0
+  },
+  "monaco": {
+    "hltbId": 146715,
+    "hltbName": "Monaco 2",
+    "mainStory": 7.0,
+    "mainExtra": 0.0,
+    "completionist": 0.0,
+    "similarity": 0.8571428571428571
+  },
+  "apb reloaded": {
+    "hltbId": 517,
+    "hltbName": "APB: Reloaded",
+    "mainStory": 39.0,
+    "mainExtra": 102.56,
+    "completionist": 145.0,
+    "similarity": 0.96
+  },
+  "batman: arkham city goty": {
+    "hltbId": 11963,
+    "hltbName": "Batman: Arkham City GOTY",
+    "mainStory": 13.47,
+    "mainExtra": 22.61,
+    "completionist": 58.9,
+    "similarity": 1.0
+  },
+  "tomb raider": {
+    "hltbId": 10469,
+    "hltbName": "Tomb Raider",
+    "mainStory": 11.32,
+    "mainExtra": 15.46,
+    "completionist": 20.91,
+    "similarity": 1.0
+  },
+  "speedrunners": {
+    "hltbId": 13778,
+    "hltbName": "SpeedRunners",
+    "mainStory": 2.15,
+    "mainExtra": 11.25,
+    "completionist": 15.72,
+    "similarity": 1.0
+  },
+  "star wars™ knights of the old republic™ ii: the sith lords™": {
+    "hltbId": 9112,
+    "hltbName": "Star Wars: Knights of the Old Republic II - The Sith Lords",
+    "mainStory": 30.42,
+    "mainExtra": 40.87,
+    "completionist": 53.98,
+    "similarity": 0.8596491228070176
+  },
+  "batman™: arkham knight": {
+    "hltbId": 18005,
+    "hltbName": "Batman: Arkham Knight",
+    "mainStory": 17.03,
+    "mainExtra": 31.47,
+    "completionist": 51.19,
+    "similarity": 1.0
+  },
+  "batman™: arkham origins": {
+    "hltbId": 12676,
+    "hltbName": "Batman: Arkham Origins",
+    "mainStory": 12.42,
+    "mainExtra": 21.93,
+    "completionist": 41.2,
+    "similarity": 1.0
+  },
+  "starbound": {
+    "hltbId": 9149,
+    "hltbName": "Starbound",
+    "mainStory": 25.02,
+    "mainExtra": 58.44,
+    "completionist": 164.83,
+    "similarity": 1.0
+  },
+  "vindictus": {
+    "hltbId": 10943,
+    "hltbName": "Vindictus",
+    "mainStory": 512.38,
+    "mainExtra": 545.0,
+    "completionist": 1000.0,
+    "similarity": 1.0
+  },
+  "deponia": {
+    "hltbId": 2448,
+    "hltbName": "Deponia",
+    "mainStory": 8.11,
+    "mainExtra": 9.68,
+    "completionist": 10.37,
+    "similarity": 1.0
+  },
+  "go home dinosaurs!": {
+    "hltbId": 3960,
+    "hltbName": "Go Home Dinosaurs!",
+    "mainStory": 5.95,
+    "mainExtra": 8.0,
+    "completionist": 12.16,
+    "similarity": 1.0
+  },
+  "payday 2": {},
+  "kerbal space program": {
+    "hltbId": 12079,
+    "hltbName": "Kerbal Space Program",
+    "mainStory": 113.88,
+    "mainExtra": 238.07,
+    "completionist": 598.07,
+    "similarity": 1.0
+  },
+  "age of empires ii (2013)": {},
+  "brothers - a tale of two sons": {},
+  "marvel heroes omega": {
+    "hltbId": 19814,
+    "hltbName": "Marvel Heroes",
+    "mainStory": 24.59,
+    "mainExtra": 104.7,
+    "completionist": 405.59,
+    "similarity": 1.0
+  },
+  "n++": {
+    "hltbId": 26340,
+    "hltbName": "N++",
+    "mainStory": 27.23,
+    "mainExtra": 54.19,
+    "completionist": 415.37,
+    "similarity": 1.0
+  },
+  "warframe": {
+    "hltbId": 11037,
+    "hltbName": "Warframe",
+    "mainStory": 113.79,
+    "mainExtra": 647.52,
+    "completionist": 1535.5,
+    "similarity": 1.0
+  },
+  "company of heroes 2": {
+    "hltbId": 1875,
+    "hltbName": "Company of Heroes 2",
+    "mainStory": 15.79,
+    "mainExtra": 25.93,
+    "completionist": 64.01,
+    "similarity": 1.0
+  },
+  "broken age": {
+    "hltbId": 26101,
+    "hltbName": "Broken Age: Act 2",
+    "mainStory": 6.04,
+    "mainExtra": 6.82,
+    "completionist": 8.54,
+    "similarity": 0.7407407407407407
+  },
+  "ascend: hand of kul": {
+    "hltbId": 13882,
+    "hltbName": "Ascend: Hand of Kul",
+    "mainStory": 24.12,
+    "mainExtra": 0.0,
+    "completionist": 44.6,
+    "similarity": 1.0
+  },
+  "path of exile": {
+    "hltbId": 6938,
+    "hltbName": "Path of Exile",
+    "mainStory": 29.94,
+    "mainExtra": 107.92,
+    "completionist": 790.88,
+    "similarity": 1.0
+  },
+  "amnesia: a machine for pigs": {
+    "hltbId": 438,
+    "hltbName": "Amnesia: A Machine for Pigs",
+    "mainStory": 4.14,
+    "mainExtra": 5.0,
+    "completionist": 5.91,
+    "similarity": 1.0
+  },
+  "middle-earth™: shadow of mordor™": {
+    "hltbId": 18006,
+    "hltbName": "Middle-Earth: Shadow of Mordor",
+    "mainStory": 15.75,
+    "mainExtra": 23.95,
+    "completionist": 32.91,
+    "similarity": 0.9666666666666667
+  },
+  "the forest": {
+    "hltbId": 18962,
+    "hltbName": "The Forest",
+    "mainStory": 15.81,
+    "mainExtra": 28.35,
+    "completionist": 58.77,
+    "similarity": 1.0
+  },
+  "tom clancy's ghost recon phantoms - na": {},
+  "skullgirls 2nd encore": {
+    "hltbId": 39099,
+    "hltbName": "Skullgirls 2nd Encore",
+    "mainStory": 3.21,
+    "mainExtra": 15.27,
+    "completionist": 65.67,
+    "similarity": 1.0
+  },
+  "crypt of the necrodancer": {
+    "hltbId": 20810,
+    "hltbName": "Crypt of the NecroDancer",
+    "mainStory": 13.93,
+    "mainExtra": 26.13,
+    "completionist": 393.35,
+    "similarity": 1.0
+  },
+  "portal 2 sixense perceptual pack": {
+    "hltbId": 27601,
+    "hltbName": "Portal 2: Sixense Perceptual Pack",
+    "mainStory": 0.0,
+    "mainExtra": 0.0,
+    "completionist": 0.0,
+    "similarity": 0.9846153846153847
+  },
+  "the wolf among us": {
+    "hltbId": 14013,
+    "hltbName": "The Wolf Among Us",
+    "mainStory": 8.62,
+    "mainExtra": 9.32,
+    "completionist": 10.93,
+    "similarity": 1.0
+  },
+  "the binding of isaac: rebirth": {
+    "hltbId": 9782,
+    "hltbName": "The Binding of Isaac: Rebirth",
+    "mainStory": 5.63,
+    "mainExtra": 98.65,
+    "completionist": 386.45,
+    "similarity": 1.0
+  },
+  "7 days to die": {
+    "hltbId": 13500,
+    "hltbName": "7 Days to Die",
+    "mainStory": 53.24,
+    "mainExtra": 111.77,
+    "completionist": 284.57,
+    "similarity": 1.0
+  },
+  "rocket league": {
+    "hltbId": 27113,
+    "hltbName": "Rocket League",
+    "mainStory": 4.66,
+    "mainExtra": 26.62,
+    "completionist": 104.24,
+    "similarity": 1.0
+  },
+  "bloody trapland": {
+    "hltbId": 14610,
+    "hltbName": "Bloody Trapland",
+    "mainStory": 5.04,
+    "mainExtra": 16.42,
+    "completionist": 26.42,
+    "similarity": 1.0
+  },
+  "ori and the blind forest": {
+    "hltbId": 19265,
+    "hltbName": "Ori and the Blind Forest",
+    "mainStory": 8.23,
+    "mainExtra": 10.38,
+    "completionist": 11.77,
+    "similarity": 1.0
+  },
+  "borderlands: the pre-sequel": {
+    "hltbId": 21248,
+    "hltbName": "Borderlands: The Pre-Sequel!",
+    "mainStory": 18.11,
+    "mainExtra": 29.37,
+    "completionist": 60.38,
+    "similarity": 0.9818181818181818
+  },
+  "gameguru classic": {},
+  "age of mythology: extended edition": {
+    "hltbId": 19455,
+    "hltbName": "Age of Mythology: Extended Edition",
+    "mainStory": 28.61,
+    "mainExtra": 42.13,
+    "completionist": 68.26,
+    "similarity": 1.0
+  },
+  "aura kingdom": {
+    "hltbId": 19725,
+    "hltbName": "Aura Kingdom",
+    "mainStory": 445.66,
+    "mainExtra": 700.0,
+    "completionist": 9341.75,
+    "similarity": 1.0
+  },
+  "cuphead": {
+    "hltbId": 21680,
+    "hltbName": "Cuphead",
+    "mainStory": 10.57,
+    "mainExtra": 16.07,
+    "completionist": 28.15,
+    "similarity": 1.0
+  },
+  "hawken": {
+    "hltbId": 17087,
+    "hltbName": "HAWKEN",
+    "mainStory": 3.0,
+    "mainExtra": 19.13,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "no man's sky": {
+    "hltbId": 20074,
+    "hltbName": "No Man's Sky",
+    "mainStory": 31.86,
+    "mainExtra": 77.01,
+    "completionist": 156.15,
+    "similarity": 1.0
+  },
+  "this war of mine": {
+    "hltbId": 22658,
+    "hltbName": "This War of Mine",
+    "mainStory": 11.28,
+    "mainExtra": 20.21,
+    "completionist": 41.71,
+    "similarity": 1.0
+  },
+  "tooth and tail": {
+    "hltbId": 40697,
+    "hltbName": "Tooth and Tail",
+    "mainStory": 8.98,
+    "mainExtra": 10.81,
+    "completionist": 18.79,
+    "similarity": 1.0
+  },
+  "thinking with time machine": {
+    "hltbId": 17991,
+    "hltbName": "Thinking with Time Machine",
+    "mainStory": 1.76,
+    "mainExtra": 2.01,
+    "completionist": 2.25,
+    "similarity": 1.0
+  },
+  "tabletop simulator": {
+    "hltbId": 17993,
+    "hltbName": "Tabletop Simulator",
+    "mainStory": 9.86,
+    "mainExtra": 147.94,
+    "completionist": 1224.61,
+    "similarity": 1.0
+  },
+  "fable anniversary": {
+    "hltbId": 16586,
+    "hltbName": "Fable Anniversary",
+    "mainStory": 13.28,
+    "mainExtra": 20.57,
+    "completionist": 32.28,
+    "similarity": 1.0
+  },
+  "the witcher 3: wild hunt": {
+    "hltbId": 10270,
+    "hltbName": "The Witcher 3: Wild Hunt",
+    "mainStory": 51.6,
+    "mainExtra": 103.73,
+    "completionist": 174.44,
+    "similarity": 1.0
+  },
+  "screencheat": {
+    "hltbId": 26318,
+    "hltbName": "Screencheat",
+    "mainStory": 2.39,
+    "mainExtra": 5.04,
+    "completionist": 7.57,
+    "similarity": 1.0
+  },
+  "ryse: son of rome": {
+    "hltbId": 14345,
+    "hltbName": "Ryse: Son of Rome",
+    "mainStory": 6.38,
+    "mainExtra": 8.34,
+    "completionist": 20.12,
+    "similarity": 1.0
+  },
+  "unturned": {
+    "hltbId": 19776,
+    "hltbName": "Unturned",
+    "mainStory": 21.91,
+    "mainExtra": 75.9,
+    "completionist": 135.94,
+    "similarity": 1.0
+  },
+  "the long dark": {
+    "hltbId": 21471,
+    "hltbName": "The Long Dark",
+    "mainStory": 23.47,
+    "mainExtra": 54.52,
+    "completionist": 247.56,
+    "similarity": 1.0
+  },
+  "lego® pirates of the caribbean the video game": {
+    "hltbId": 5256,
+    "hltbName": "LEGO Pirates of the Caribbean: The Video Game",
+    "mainStory": 8.58,
+    "mainExtra": 14.97,
+    "completionist": 23.16,
+    "similarity": 0.9887640449438202
+  },
+  "moon hunters": {
+    "hltbId": 33004,
+    "hltbName": "Moon Hunters",
+    "mainStory": 1.71,
+    "mainExtra": 7.31,
+    "completionist": 24.82,
+    "similarity": 1.0
+  },
+  "don't starve together": {
+    "hltbId": 23828,
+    "hltbName": "Don't Starve Together",
+    "mainStory": 34.13,
+    "mainExtra": 108.17,
+    "completionist": 213.71,
+    "similarity": 1.0
+  },
+  "superhot": {
+    "hltbId": 21723,
+    "hltbName": "SUPERHOT",
+    "mainStory": 2.39,
+    "mainExtra": 5.16,
+    "completionist": 19.93,
+    "similarity": 1.0
+  },
+  "vagante": {
+    "hltbId": 24968,
+    "hltbName": "Vagante",
+    "mainStory": 31.9,
+    "mainExtra": 44.77,
+    "completionist": 77.15,
+    "similarity": 1.0
+  },
+  "tera": {
+    "hltbId": 9697,
+    "hltbName": "TERA",
+    "mainStory": 34.23,
+    "mainExtra": 115.57,
+    "completionist": 230.62,
+    "similarity": 1.0
+  },
+  "jotun: valhalla edition": {
+    "hltbId": 30623,
+    "hltbName": "Jotun",
+    "mainStory": 5.15,
+    "mainExtra": 5.67,
+    "completionist": 7.36,
+    "similarity": 1.0
+  },
+  "gloria victis": {
+    "hltbId": 41720,
+    "hltbName": "Gloria Victis",
+    "mainStory": 0.0,
+    "mainExtra": 0.0,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "tales from the borderlands": {
+    "hltbId": 22804,
+    "hltbName": "Tales from the Borderlands",
+    "mainStory": 10.6,
+    "mainExtra": 11.11,
+    "completionist": 11.59,
+    "similarity": 1.0
+  },
+  "yoku's island express": {
+    "hltbId": 56962,
+    "hltbName": "Yoku's Island Express",
+    "mainStory": 5.65,
+    "mainExtra": 8.06,
+    "completionist": 11.29,
+    "similarity": 1.0
+  },
+  "deus ex: mankind divided™": {
+    "hltbId": 25434,
+    "hltbName": "Deus Ex: Mankind Divided",
+    "mainStory": 15.98,
+    "mainExtra": 31.03,
+    "completionist": 52.87,
+    "similarity": 1.0
+  },
+  "keep talking and nobody explodes": {
+    "hltbId": 30933,
+    "hltbName": "Keep Talking and Nobody Explodes",
+    "mainStory": 5.21,
+    "mainExtra": 6.62,
+    "completionist": 13.83,
+    "similarity": 1.0
+  },
+  "tacoma": {
+    "hltbId": 26799,
+    "hltbName": "Tacoma",
+    "mainStory": 2.53,
+    "mainExtra": 3.14,
+    "completionist": 3.55,
+    "similarity": 1.0
+  },
+  "lightning returns: final fantasy xiii": {},
+  "popup dungeon": {
+    "hltbId": 71146,
+    "hltbName": "Popup Dungeon",
+    "mainStory": 9.32,
+    "mainExtra": 50.1,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "middle-earth™: shadow of war™": {
+    "hltbId": 44022,
+    "hltbName": "Middle-Earth: Shadow of War",
+    "mainStory": 21.0,
+    "mainExtra": 36.51,
+    "completionist": 56.95,
+    "similarity": 0.9629629629629629
+  },
+  "star wars™ galactic battlegrounds saga": {
+    "hltbId": 35550,
+    "hltbName": "Star Wars: Galactic Battlegrounds Saga",
+    "mainStory": 42.36,
+    "mainExtra": 43.83,
+    "completionist": 45.63,
+    "similarity": 0.8266666666666667
+  },
+  "choice chamber": {
+    "hltbId": 31398,
+    "hltbName": "Choice Chamber",
+    "mainStory": 3.0,
+    "mainExtra": 16.94,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "swordsman": {
+    "hltbId": 23322,
+    "hltbName": "Swordsman",
+    "mainStory": 0.0,
+    "mainExtra": 0.0,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "hollow knight": {
+    "hltbId": 26286,
+    "hltbName": "Hollow Knight",
+    "mainStory": 26.95,
+    "mainExtra": 41.6,
+    "completionist": 65.18,
+    "similarity": 1.0
+  },
+  "starbound - unstable": {},
+  "her story": {
+    "hltbId": 26957,
+    "hltbName": "Her Story",
+    "mainStory": 2.41,
+    "mainExtra": 3.33,
+    "completionist": 4.15,
+    "similarity": 1.0
+  },
+  "tis-100": {
+    "hltbId": 27382,
+    "hltbName": "TIS-100",
+    "mainStory": 14.34,
+    "mainExtra": 31.99,
+    "completionist": 36.04,
+    "similarity": 1.0
+  },
+  "human resource machine": {
+    "hltbId": 31008,
+    "hltbName": "Human Resource Machine",
+    "mainStory": 4.39,
+    "mainExtra": 8.09,
+    "completionist": 10.05,
+    "similarity": 1.0
+  },
+  "doom": {
+    "hltbId": 101201,
+    "hltbName": "DOOMBLADE",
+    "mainStory": 10.83,
+    "mainExtra": 12.67,
+    "completionist": 16.62,
+    "similarity": 0.6153846153846154
+  },
+  "dead by daylight": {
+    "hltbId": 37986,
+    "hltbName": "Dead by Daylight",
+    "mainStory": 78.64,
+    "mainExtra": 356.32,
+    "completionist": 763.43,
+    "similarity": 1.0
+  },
+  "smite": {},
+  "ori and the blind forest: definitive edition": {
+    "hltbId": 19265,
+    "hltbName": "Ori and the Blind Forest",
+    "mainStory": 8.23,
+    "mainExtra": 10.38,
+    "completionist": 11.77,
+    "similarity": 1.0
+  },
+  "rise of the tomb raider": {
+    "hltbId": 19266,
+    "hltbName": "Rise of the Tomb Raider",
+    "mainStory": 13.31,
+    "mainExtra": 21.86,
+    "completionist": 35.33,
+    "similarity": 1.0
+  },
+  "undertale": {
+    "hltbId": 30385,
+    "hltbName": "Undertale",
+    "mainStory": 7.02,
+    "mainExtra": 11.31,
+    "completionist": 20.64,
+    "similarity": 1.0
+  },
+  "endless™ space 2": {
+    "hltbId": 41360,
+    "hltbName": "Endless Space 2",
+    "mainStory": 19.41,
+    "mainExtra": 48.12,
+    "completionist": 153.67,
+    "similarity": 0.6
+  },
+  "tower unite": {
+    "hltbId": 39320,
+    "hltbName": "Tower Unite",
+    "mainStory": 12.97,
+    "mainExtra": 43.53,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "borderlands 3": {
+    "hltbId": 65882,
+    "hltbName": "Borderlands 3",
+    "mainStory": 23.39,
+    "mainExtra": 46.37,
+    "completionist": 84.06,
+    "similarity": 1.0
+  },
+  "clustertruck": {
+    "hltbId": 40215,
+    "hltbName": "Clustertruck",
+    "mainStory": 3.63,
+    "mainExtra": 5.58,
+    "completionist": 8.32,
+    "similarity": 1.0
+  },
+  "nex machina": {
+    "hltbId": 45931,
+    "hltbName": "Nex Machina",
+    "mainStory": 1.65,
+    "mainExtra": 4.21,
+    "completionist": 19.59,
+    "similarity": 1.0
+  },
+  "x-morph: defense": {
+    "hltbId": 52418,
+    "hltbName": "X-Morph: Defense",
+    "mainStory": 11.62,
+    "mainExtra": 16.64,
+    "completionist": 28.45,
+    "similarity": 1.0
+  },
+  "bioshock remastered": {
+    "hltbId": 1065,
+    "hltbName": "BioShock",
+    "mainStory": 12.11,
+    "mainExtra": 15.63,
+    "completionist": 23.23,
+    "similarity": 1.0
+  },
+  "bioshock 2 remastered": {
+    "hltbId": 1066,
+    "hltbName": "BioShock 2",
+    "mainStory": 10.56,
+    "mainExtra": 14.42,
+    "completionist": 23.69,
+    "similarity": 1.0
+  },
+  "system shock: classic": {
+    "hltbId": 9547,
+    "hltbName": "System Shock",
+    "mainStory": 13.08,
+    "mainExtra": 15.27,
+    "completionist": 21.38,
+    "similarity": 0.7272727272727273
+  },
+  "system shock: enhanced edition": {
+    "hltbId": 9547,
+    "hltbName": "System Shock",
+    "mainStory": 13.08,
+    "mainExtra": 15.27,
+    "completionist": 21.38,
+    "similarity": 0.96
+  },
+  "metro exodus": {
+    "hltbId": 46401,
+    "hltbName": "Metro Exodus",
+    "mainStory": 15.9,
+    "mainExtra": 23.99,
+    "completionist": 41.65,
+    "similarity": 1.0
+  },
+  "hellblade: senua's sacrifice": {
+    "hltbId": 41638,
+    "hltbName": "Hellblade: Senua's Sacrifice",
+    "mainStory": 7.53,
+    "mainExtra": 8.19,
+    "completionist": 9.22,
+    "similarity": 1.0
+  },
+  "emily is away": {
+    "hltbId": 32034,
+    "hltbName": "Emily is Away",
+    "mainStory": 0.68,
+    "mainExtra": 0.96,
+    "completionist": 1.09,
+    "similarity": 1.0
+  },
+  "draw slasher": {
+    "hltbId": 17633,
+    "hltbName": "Draw Slasher",
+    "mainStory": 2.65,
+    "mainExtra": 3.53,
+    "completionist": 7.1,
+    "similarity": 1.0
+  },
+  "little nightmares": {
+    "hltbId": 39417,
+    "hltbName": "Little Nightmares",
+    "mainStory": 3.57,
+    "mainExtra": 5.19,
+    "completionist": 9.07,
+    "similarity": 1.0
+  },
+  "golf with your friends": {
+    "hltbId": 34956,
+    "hltbName": "Golf With Your Friends",
+    "mainStory": 6.25,
+    "mainExtra": 11.19,
+    "completionist": 26.32,
+    "similarity": 1.0
+  },
+  "wallpaper engine": {},
+  "divinity: original sin 2": {
+    "hltbId": 39525,
+    "hltbName": "Divinity: Original Sin II",
+    "mainStory": 59.27,
+    "mainExtra": 101.35,
+    "completionist": 157.79,
+    "similarity": 1.0
+  },
+  "vrchat": {
+    "hltbId": 43639,
+    "hltbName": "VRChat",
+    "mainStory": 109.86,
+    "mainExtra": 135.19,
+    "completionist": 351.8,
+    "similarity": 1.0
+  },
+  "one troll army": {
+    "hltbId": 37410,
+    "hltbName": "One Troll Army",
+    "mainStory": 2.0,
+    "mainExtra": 5.54,
+    "completionist": 6.47,
+    "similarity": 1.0
+  },
+  "star wars™ rebellion": {
+    "hltbId": 9118,
+    "hltbName": "Star Wars: Rebellion",
+    "mainStory": 18.3,
+    "mainExtra": 43.5,
+    "completionist": 148.5,
+    "similarity": 0.6666666666666666
+  },
+  "drawful 2": {
+    "hltbId": 38234,
+    "hltbName": "Drawful 2",
+    "mainStory": 1.9,
+    "mainExtra": 6.49,
+    "completionist": 6.56,
+    "similarity": 1.0
+  },
+  "expeditions: viking": {
+    "hltbId": 43605,
+    "hltbName": "Expeditions: Viking",
+    "mainStory": 30.88,
+    "mainExtra": 39.92,
+    "completionist": 59.85,
+    "similarity": 1.0
+  },
+  "wizard of legend": {
+    "hltbId": 26294,
+    "hltbName": "Wizard of Legend",
+    "mainStory": 8.64,
+    "mainExtra": 16.25,
+    "completionist": 26.41,
+    "similarity": 1.0
+  },
+  "book of demons": {
+    "hltbId": 41486,
+    "hltbName": "Book of Demons",
+    "mainStory": 9.98,
+    "mainExtra": 15.4,
+    "completionist": 35.8,
+    "similarity": 1.0
+  },
+  "oxygen not included": {
+    "hltbId": 44050,
+    "hltbName": "Oxygen Not Included",
+    "mainStory": 96.31,
+    "mainExtra": 198.82,
+    "completionist": 439.74,
+    "similarity": 1.0
+  },
+  "bayonetta": {
+    "hltbId": 966,
+    "hltbName": "Bayonetta",
+    "mainStory": 11.56,
+    "mainExtra": 15.51,
+    "completionist": 41.73,
+    "similarity": 1.0
+  },
+  "the deed: dynasty": {
+    "hltbId": 38139,
+    "hltbName": "The Deed: Dynasty",
+    "mainStory": 5.56,
+    "mainExtra": 8.31,
+    "completionist": 11.93,
+    "similarity": 1.0
+  },
+  "pico park:classic edition": {},
+  "caveman world: mountains of unga boonga": {
+    "hltbId": 37023,
+    "hltbName": "Caveman World: Mountains of Unga Boonga",
+    "mainStory": 0.0,
+    "mainExtra": 0.0,
+    "completionist": 7.56,
+    "similarity": 1.0
+  },
+  "fury unleashed": {
+    "hltbId": 46993,
+    "hltbName": "Fury Unleashed",
+    "mainStory": 7.64,
+    "mainExtra": 16.27,
+    "completionist": 31.24,
+    "similarity": 1.0
+  },
+  "deceit": {
+    "hltbId": 47520,
+    "hltbName": "Deceit",
+    "mainStory": 3.8,
+    "mainExtra": 8.75,
+    "completionist": 51.87,
+    "similarity": 1.0
+  },
+  "blind trust": {
+    "hltbId": 37505,
+    "hltbName": "Blind Trust",
+    "mainStory": 0.28,
+    "mainExtra": 0.62,
+    "completionist": 1.22,
+    "similarity": 1.0
+  },
+  "quantum break": {
+    "hltbId": 19853,
+    "hltbName": "Quantum Break",
+    "mainStory": 10.08,
+    "mainExtra": 13.14,
+    "completionist": 18.55,
+    "similarity": 1.0
+  },
+  "batman - the telltale series": {
+    "hltbId": 109757,
+    "hltbName": "The Telltale Batman Shadows Edition",
+    "mainStory": 0.0,
+    "mainExtra": 0.0,
+    "completionist": 0.0,
+    "similarity": 0.7671232876712328
+  },
+  "911 operator": {
+    "hltbId": 41512,
+    "hltbName": "911 Operator",
+    "mainStory": 6.34,
+    "mainExtra": 10.36,
+    "completionist": 21.2,
+    "similarity": 1.0
+  },
+  "shenzhen i/o": {
+    "hltbId": 40005,
+    "hltbName": "SHENZHEN I/O",
+    "mainStory": 37.33,
+    "mainExtra": 41.58,
+    "completionist": 51.6,
+    "similarity": 1.0
+  },
+  "celeste": {
+    "hltbId": 42818,
+    "hltbName": "Celeste",
+    "mainStory": 8.31,
+    "mainExtra": 14.64,
+    "completionist": 39.19,
+    "similarity": 1.0
+  },
+  "along the edge": {
+    "hltbId": 40790,
+    "hltbName": "Along the Edge",
+    "mainStory": 2.56,
+    "mainExtra": 4.87,
+    "completionist": 8.89,
+    "similarity": 1.0
+  },
+  "toejam & earl: back in the groove": {
+    "hltbId": 65277,
+    "hltbName": "ToeJam & Earl: Back in the Groove",
+    "mainStory": 2.2,
+    "mainExtra": 4.51,
+    "completionist": 15.81,
+    "similarity": 1.0
+  },
+  "dear esther: landmark edition": {
+    "hltbId": 43743,
+    "hltbName": "Dear Esther",
+    "mainStory": 1.3,
+    "mainExtra": 1.62,
+    "completionist": 2.59,
+    "similarity": 1.0
+  },
+  "rpg maker vx": {
+    "hltbId": 50141,
+    "hltbName": "RPG Maker VX",
+    "mainStory": 0.0,
+    "mainExtra": 0.0,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "lust for darkness": {
+    "hltbId": 57574,
+    "hltbName": "Lust for Darkness",
+    "mainStory": 2.57,
+    "mainExtra": 3.38,
+    "completionist": 3.87,
+    "similarity": 1.0
+  },
+  "nier:automata™": {
+    "hltbId": 38029,
+    "hltbName": "NieR: Automata",
+    "mainStory": 21.27,
+    "mainExtra": 37.56,
+    "completionist": 61.29,
+    "similarity": 0.9629629629629629
+  },
+  "satisfactory": {
+    "hltbId": 65835,
+    "hltbName": "Satisfactory",
+    "mainStory": 106.5,
+    "mainExtra": 146.05,
+    "completionist": 224.12,
+    "similarity": 1.0
+  },
+  "wandersong": {
+    "hltbId": 61375,
+    "hltbName": "Wandersong",
+    "mainStory": 9.4,
+    "mainExtra": 11.19,
+    "completionist": 11.83,
+    "similarity": 1.0
+  },
+  "soulblight": {
+    "hltbId": 56395,
+    "hltbName": "Soulblight",
+    "mainStory": 8.17,
+    "mainExtra": 0.0,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "just shapes & beats": {
+    "hltbId": 57138,
+    "hltbName": "Just Shapes & Beats",
+    "mainStory": 3.33,
+    "mainExtra": 7.42,
+    "completionist": 34.38,
+    "similarity": 1.0
+  },
+  "sundered: eldritch edition": {
+    "hltbId": 46863,
+    "hltbName": "Sundered",
+    "mainStory": 11.99,
+    "mainExtra": 15.41,
+    "completionist": 20.42,
+    "similarity": 1.0
+  },
+  "pathway": {
+    "hltbId": 66299,
+    "hltbName": "Pathway",
+    "mainStory": 10.99,
+    "mainExtra": 16.97,
+    "completionist": 37.28,
+    "similarity": 1.0
+  },
+  "warhammer: vermintide 2": {
+    "hltbId": 51768,
+    "hltbName": "Warhammer: Vermintide 2",
+    "mainStory": 10.81,
+    "mainExtra": 28.67,
+    "completionist": 127.12,
+    "similarity": 1.0
+  },
+  "indiana jones® and the emperor's tomb™": {
+    "hltbId": 4663,
+    "hltbName": "Indiana Jones and the Emperor's Tomb",
+    "mainStory": 12.0,
+    "mainExtra": 12.27,
+    "completionist": 19.31,
+    "similarity": 1.0
+  },
+  "pikuniku": {
+    "hltbId": 64060,
+    "hltbName": "Pikuniku",
+    "mainStory": 3.11,
+    "mainExtra": 3.87,
+    "completionist": 6.49,
+    "similarity": 1.0
+  },
+  "neverout": {
+    "hltbId": 64727,
+    "hltbName": "Neverout",
+    "mainStory": 1.73,
+    "mainExtra": 1.96,
+    "completionist": 2.31,
+    "similarity": 1.0
+  },
+  "we were here": {
+    "hltbId": 43474,
+    "hltbName": "We Were Here",
+    "mainStory": 1.66,
+    "mainExtra": 2.06,
+    "completionist": 2.65,
+    "similarity": 1.0
+  },
+  "black desert": {
+    "hltbId": 46467,
+    "hltbName": "Black Desert",
+    "mainStory": 93.74,
+    "mainExtra": 287.31,
+    "completionist": 2060.45,
+    "similarity": 1.0
+  },
+  "the end is nigh": {
+    "hltbId": 47066,
+    "hltbName": "The End Is Nigh",
+    "mainStory": 8.44,
+    "mainExtra": 15.73,
+    "completionist": 68.05,
+    "similarity": 1.0
+  },
+  "dead cells": {
+    "hltbId": 45727,
+    "hltbName": "Dead Cells",
+    "mainStory": 14.06,
+    "mainExtra": 32.0,
+    "completionist": 91.39,
+    "similarity": 1.0
+  },
+  "learn to fly 3": {
+    "hltbId": 46573,
+    "hltbName": "Learn to Fly 3",
+    "mainStory": 2.4,
+    "mainExtra": 6.72,
+    "completionist": 16.22,
+    "similarity": 1.0
+  },
+  "wargroove": {
+    "hltbId": 61653,
+    "hltbName": "Wargroove",
+    "mainStory": 19.95,
+    "mainExtra": 38.14,
+    "completionist": 84.47,
+    "similarity": 1.0
+  },
+  "superhot vr": {
+    "hltbId": 42418,
+    "hltbName": "SUPERHOT VR",
+    "mainStory": 1.97,
+    "mainExtra": 3.37,
+    "completionist": 6.86,
+    "similarity": 1.0
+  },
+  "while true: learn()": {
+    "hltbId": 56591,
+    "hltbName": "while True: learn()",
+    "mainStory": 6.7,
+    "mainExtra": 9.02,
+    "completionist": 13.85,
+    "similarity": 1.0
+  },
+  "beat saber": {
+    "hltbId": 56377,
+    "hltbName": "Beat Saber",
+    "mainStory": 6.48,
+    "mainExtra": 23.45,
+    "completionist": 53.81,
+    "similarity": 1.0
+  },
+  "necroworm": {
+    "hltbId": 74656,
+    "hltbName": "NecroWorm",
+    "mainStory": 2.12,
+    "mainExtra": 0.0,
+    "completionist": 2.5,
+    "similarity": 1.0
+  },
+  "soulworker": {
+    "hltbId": 53770,
+    "hltbName": "SoulWorker",
+    "mainStory": 52.54,
+    "mainExtra": 0.0,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "pixplode": {
+    "hltbId": 53423,
+    "hltbName": "Pixplode",
+    "mainStory": 0.94,
+    "mainExtra": 0.96,
+    "completionist": 1.06,
+    "similarity": 1.0
+  },
+  "risk of rain 2": {
+    "hltbId": 65967,
+    "hltbName": "Risk of Rain 2",
+    "mainStory": 10.76,
+    "mainExtra": 43.93,
+    "completionist": 144.42,
+    "similarity": 1.0
+  },
+  "corridor z": {
+    "hltbId": 37112,
+    "hltbName": "Corridor Z",
+    "mainStory": 3.65,
+    "mainExtra": 7.42,
+    "completionist": 12.17,
+    "similarity": 1.0
+  },
+  "car mechanic simulator 2018": {
+    "hltbId": 48426,
+    "hltbName": "Car Mechanic Simulator 2018",
+    "mainStory": 28.05,
+    "mainExtra": 82.11,
+    "completionist": 89.8,
+    "similarity": 1.0
+  },
+  "slay the spire": {
+    "hltbId": 51390,
+    "hltbName": "Slay the Spire",
+    "mainStory": 12.33,
+    "mainExtra": 47.2,
+    "completionist": 188.74,
+    "similarity": 1.0
+  },
+  "loading screen simulator": {
+    "hltbId": 47364,
+    "hltbName": "Loading Screen Simulator",
+    "mainStory": 0.6,
+    "mainExtra": 1.14,
+    "completionist": 1.85,
+    "similarity": 1.0
+  },
+  "mindnight": {
+    "hltbId": 51682,
+    "hltbName": "MINDNIGHT",
+    "mainStory": 0.0,
+    "mainExtra": 0.0,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "batman: the enemy within - the telltale series": {
+    "hltbId": 47529,
+    "hltbName": "Batman: The Enemy Within",
+    "mainStory": 10.01,
+    "mainExtra": 10.76,
+    "completionist": 10.97,
+    "similarity": 0.696969696969697
+  },
+  "act it out xl!": {
+    "hltbId": 65334,
+    "hltbName": "ACT IT OUT XL!",
+    "mainStory": 0.0,
+    "mainExtra": 0.0,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "splitgate": {
+    "hltbId": 112274,
+    "hltbName": "Splitgate",
+    "mainStory": 14.42,
+    "mainExtra": 132.21,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "code vein": {},
+  "gris": {
+    "hltbId": 62257,
+    "hltbName": "GRIS",
+    "mainStory": 3.55,
+    "mainExtra": 4.15,
+    "completionist": 6.44,
+    "similarity": 1.0
+  },
+  "bloodstained: ritual of the night": {
+    "hltbId": 26266,
+    "hltbName": "Bloodstained: Ritual of the Night",
+    "mainStory": 14.04,
+    "mainExtra": 20.66,
+    "completionist": 35.57,
+    "similarity": 1.0
+  },
+  "senran kagura peach beach splash": {
+    "hltbId": 43230,
+    "hltbName": "Senran Kagura: Peach Beach Splash",
+    "mainStory": 12.86,
+    "mainExtra": 21.34,
+    "completionist": 45.94,
+    "similarity": 0.676923076923077
+  },
+  "doki doki literature club": {
+    "hltbId": 49377,
+    "hltbName": "Doki Doki Literature Club!",
+    "mainStory": 4.23,
+    "mainExtra": 5.97,
+    "completionist": 7.7,
+    "similarity": 0.9803921568627451
+  },
+  "scp: secret laboratory": {
+    "hltbId": 54851,
+    "hltbName": "SCP: Secret Laboratory",
+    "mainStory": 15.0,
+    "mainExtra": 22.97,
+    "completionist": 170.25,
+    "similarity": 1.0
+  },
+  "kingdom two crowns": {
+    "hltbId": 63099,
+    "hltbName": "Kingdom Two Crowns",
+    "mainStory": 21.43,
+    "mainExtra": 29.04,
+    "completionist": 61.68,
+    "similarity": 1.0
+  },
+  "simulacra": {},
+  "aimlabs": {
+    "hltbId": 125667,
+    "hltbName": "Aimlabs",
+    "mainStory": 5.27,
+    "mainExtra": 15.17,
+    "completionist": 25.07,
+    "similarity": 1.0
+  },
+  "exapunks": {
+    "hltbId": 59202,
+    "hltbName": "EXAPUNKS",
+    "mainStory": 25.3,
+    "mainExtra": 28.38,
+    "completionist": 34.61,
+    "similarity": 1.0
+  },
+  "driftland: the magic revival": {
+    "hltbId": 56724,
+    "hltbName": "Driftland: The Magic Revival",
+    "mainStory": 24.2,
+    "mainExtra": 35.34,
+    "completionist": 42.27,
+    "similarity": 1.0
+  },
+  "orbital racer": {
+    "hltbId": 53958,
+    "hltbName": "Orbital Racer",
+    "mainStory": 1.12,
+    "mainExtra": 0.0,
+    "completionist": 2.4,
+    "similarity": 1.0
+  },
+  "overcooked! 2": {
+    "hltbId": 57518,
+    "hltbName": "Overcooked! 2",
+    "mainStory": 7.09,
+    "mainExtra": 11.8,
+    "completionist": 25.42,
+    "similarity": 1.0
+  },
+  "borderlands goty enhanced": {
+    "hltbId": 1280,
+    "hltbName": "Borderlands: Game of the Year",
+    "mainStory": 20.52,
+    "mainExtra": 35.87,
+    "completionist": 74.31,
+    "similarity": 0.9803921568627451
+  },
+  "the curse of monkey island": {
+    "hltbId": 9822,
+    "hltbName": "The Curse of Monkey Island",
+    "mainStory": 7.85,
+    "mainExtra": 9.97,
+    "completionist": 9.97,
+    "similarity": 1.0
+  },
+  "tales of arise": {
+    "hltbId": 68118,
+    "hltbName": "Tales of Arise",
+    "mainStory": 41.16,
+    "mainExtra": 56.54,
+    "completionist": 73.93,
+    "similarity": 0.7142857142857143
+  },
+  "cloudpunk": {
+    "hltbId": 62579,
+    "hltbName": "Cloudpunk",
+    "mainStory": 8.87,
+    "mainExtra": 11.46,
+    "completionist": 15.22,
+    "similarity": 1.0
+  },
+  "hellblade: senua's sacrifice vr edition": {
+    "hltbId": 59458,
+    "hltbName": "Hellblade: Senua's Sacrifice - VR Edition",
+    "mainStory": 6.95,
+    "mainExtra": 7.5,
+    "completionist": 8.36,
+    "similarity": 0.975
+  },
+  "treasure hunter simulator": {
+    "hltbId": 63162,
+    "hltbName": "Treasure Hunter Simulator",
+    "mainStory": 9.38,
+    "mainExtra": 12.12,
+    "completionist": 14.38,
+    "similarity": 1.0
+  },
+  "shadow of the tomb raider": {
+    "hltbId": 51233,
+    "hltbName": "Shadow of the Tomb Raider",
+    "mainStory": 12.65,
+    "mainExtra": 22.95,
+    "completionist": 38.79,
+    "similarity": 1.0
+  },
+  "muse dash": {
+    "hltbId": 66633,
+    "hltbName": "Muse Dash",
+    "mainStory": 6.84,
+    "mainExtra": 15.14,
+    "completionist": 24.14,
+    "similarity": 1.0
+  },
+  "rhythm doctor": {
+    "hltbId": 65849,
+    "hltbName": "Rhythm Doctor",
+    "mainStory": 4.22,
+    "mainExtra": 9.05,
+    "completionist": 16.19,
+    "similarity": 1.0
+  },
+  "scarlet nexus": {},
+  "doom eternal": {
+    "hltbId": 57506,
+    "hltbName": "Doom Eternal",
+    "mainStory": 14.39,
+    "mainExtra": 20.62,
+    "completionist": 29.47,
+    "similarity": 0.75
+  },
+  "hexologic": {
+    "hltbId": 57487,
+    "hltbName": "Hexologic",
+    "mainStory": 2.18,
+    "mainExtra": 3.11,
+    "completionist": 4.9,
+    "similarity": 1.0
+  },
+  "7 billion humans": {
+    "hltbId": 60259,
+    "hltbName": "7 Billion Humans",
+    "mainStory": 10.1,
+    "mainExtra": 16.2,
+    "completionist": 22.17,
+    "similarity": 1.0
+  },
+  "112 operator": {
+    "hltbId": 77546,
+    "hltbName": "112 Operator",
+    "mainStory": 10.15,
+    "mainExtra": 19.14,
+    "completionist": 28.07,
+    "similarity": 1.0
+  },
+  "assassin's creed odyssey": {
+    "hltbId": 57503,
+    "hltbName": "Assassin's Creed Odyssey",
+    "mainStory": 45.61,
+    "mainExtra": 85.43,
+    "completionist": 145.53,
+    "similarity": 1.0
+  },
+  "supraland": {
+    "hltbId": 62224,
+    "hltbName": "Supraland",
+    "mainStory": 12.96,
+    "mainExtra": 16.75,
+    "completionist": 23.49,
+    "similarity": 1.0
+  },
+  "roarr! jurassic edition": {},
+  "rustler": {
+    "hltbId": 85842,
+    "hltbName": "Rustler",
+    "mainStory": 6.88,
+    "mainExtra": 9.4,
+    "completionist": 16.23,
+    "similarity": 1.0
+  },
+  "kurtzpel": {
+    "hltbId": 67074,
+    "hltbName": "KurtzPel",
+    "mainStory": 3.84,
+    "mainExtra": 0.0,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "δv: rings of saturn": {
+    "hltbId": 67853,
+    "hltbName": "ΔV: Rings of Saturn",
+    "mainStory": 24.15,
+    "mainExtra": 0.0,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "sunset overdrive": {
+    "hltbId": 21278,
+    "hltbName": "Sunset Overdrive",
+    "mainStory": 10.1,
+    "mainExtra": 17.65,
+    "completionist": 34.25,
+    "similarity": 1.0
+  },
+  "out of reach: treasure royale": {
+    "hltbId": 86056,
+    "hltbName": "Out of Reach: Treasure Royale",
+    "mainStory": 0.0,
+    "mainExtra": 0.0,
+    "completionist": 0.0,
+    "similarity": 1.0
+  },
+  "radio commander": {
+    "hltbId": 69329,
+    "hltbName": "Radio Commander",
+    "mainStory": 8.24,
+    "mainExtra": 9.94,
+    "completionist": 12.59,
+    "similarity": 1.0
+  },
+  "crying suns": {
+    "hltbId": 62979,
+    "hltbName": "Crying Suns",
+    "mainStory": 14.81,
+    "mainExtra": 21.57,
+    "completionist": 45.15,
+    "similarity": 1.0
+  },
+  "valheim": {
+    "hltbId": 87873,
+    "hltbName": "Valheim",
+    "mainStory": 82.43,
+    "mainExtra": 104.46,
+    "completionist": 146.61,
+    "similarity": 1.0
+  }
+}
