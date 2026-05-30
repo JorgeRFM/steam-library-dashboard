@@ -36,6 +36,113 @@ HIDDEN_APPIDS = {
     if appid.strip().isdigit()
 }
 
+# Global hidden-name filter.
+# These names are hidden for everyone in the public/family view, even if the owner is not Jorge.
+# You can add more from Render Environment using:
+# HIDDEN_GAME_NAMES=Game One|Game Two|Game Three
+DEFAULT_HIDDEN_GAME_NAMES = [
+    "Academy Love Saga: Tennis Angels",
+    "The Agnietta ~The holy healer & the cursed dungeon~",
+    "AURA: Hentai Cards",
+    "Aurelia",
+    "Becoming a King",
+    "Broken Hearts Island",
+    "Cursed Armor",
+    "A Dream That Changes Everything",
+    "Dungeon Devotion",
+    "Goblin Dungeons",
+    "Heavy Hearts",
+    "Heroine Conquest",
+    "Monster Girl Island: Prologue",
+    "Nightmare Knight ~Sacred Maiden & Fallen Magic~",
+    "Quickie: A Love Hotel Story",
+    "Quickie: Fantasy Adventure",
+    "Souper Game",
+    "Succubus of Aphrodisia",
+    "Waifu Fighter",
+    "Witch's Dungeon",
+    "Yusha Prototype",
+    "Alchemy Quest",
+    "Awaken: Hentai Dice",
+    "Breeders of the Nephelym",
+    "Carnal Instinct",
+    "Claire's Quest",
+    "Coffee & Boobs",
+    "Colony City 27λ",
+    "Corporate Slave Succubus",
+    "Cursed Armor 2",
+    "Desert Stalker",
+    "Dreamcutter",
+    "Escape Dungeon",
+    "Escape Dungeon 2",
+    "Evenicle",
+    "FlipWitch - Forbidden Sex Hex",
+    "For the Queen",
+    "Fox Sex Farm",
+    "Happy Island Fantasy",
+    "Harem of Gods",
+    "Hypnotic Eyes",
+    "Kaiju Princess",
+    "Life With a College Girl",
+    "Love and Sex: Second Base",
+    "Love n Life: Happy Student",
+    "Love Sucks: Night One",
+    "Lust Academy Season 2",
+    "Lyndaria: Lust Adventure",
+    "Melia's Witch Test",
+    "Milfy Way: Space Orgasm",
+    "Mirai's Midnight Stream",
+    "Projekt: Passion",
+    "Projekt: Passion - Season 2",
+    "Qi Luo’s Erotic Life",
+    "Qi Luo's Erotic Life",
+    "Ravager",
+    "Rich Lady's Slave Role Play",
+    "RUMBLE BLAZING",
+    "Seeds of Chaos",
+    "SENRAN KAGURA Peach Beach Splash",
+    "A Sex Slave's Love Story",
+    "Sexy Mystic Survivors",
+    "SNOWBREAK",
+    "Subverse",
+    "SUCCUBUS",
+    "Succubus: The Lustborn Curse",
+    "Sword x Hime",
+    "Take Me To The Dungeon!!",
+    "Tales of the Moon",
+    "Tame It!",
+    "Third Crisis",
+    "Treasure of Nadia",
+    "Tropical Monster Girls",
+    "Umbronomicon",
+    "VoidBound",
+    "Wedding Witch",
+    "Wicked Island",
+    "Wings of Seduction : Bust 'em out!",
+    "Yarimono",
+    "Yoshima: Hentai Simulator",
+    "Zetria",
+]
+
+def normalize_game_name(value):
+    return " ".join(str(value or "").casefold().replace("’", "'").split())
+
+
+HIDDEN_GAME_NAMES = {
+    normalize_game_name(name)
+    for name in DEFAULT_HIDDEN_GAME_NAMES
+    if str(name).strip()
+}
+
+# Extra names can be provided in Render/local .env with a pipe separator.
+# Pipe is safer than comma because some game titles include commas.
+HIDDEN_GAME_NAMES.update({
+    normalize_game_name(name)
+    for name in os.getenv("HIDDEN_GAME_NAMES", "").split("|")
+    if name.strip()
+})
+
+
 # Automatic privacy filter for Jorge's games only.
 # This hides games that look adult/NSFW when Jorge is the owner.
 # You can still add exact overrides in .env with HIDDEN_APPIDS.
@@ -579,6 +686,21 @@ def is_hidden_appid(appid):
         return False
 
 
+def is_hidden_game_name(name):
+    return normalize_game_name(name) in HIDDEN_GAME_NAMES
+
+
+def is_globally_hidden_game(game):
+    """Hide exact manually listed games for every viewer/owner."""
+    if not game:
+        return False
+
+    if is_hidden_appid(game.get("appid")):
+        return True
+
+    return is_hidden_game_name(game.get("name", ""))
+
+
 def safe_int(value, default=0):
     try:
         if value in (None, ""):
@@ -597,6 +719,9 @@ def is_nsfw_or_private_game(game):
     """Detect games Jorge does not want exposed in public family mode."""
     if not game:
         return False
+
+    if is_globally_hidden_game(game):
+        return True
 
     appid = game.get("appid")
 
@@ -622,6 +747,14 @@ def is_nsfw_or_private_game(game):
         return True
 
     return False
+
+
+def should_hide_for_public_view(game, owner_steam_id):
+    """Hide manual global names for everyone, and Jorge's detected NSFW/private games."""
+    if is_globally_hidden_game(game):
+        return True
+
+    return str(owner_steam_id) == MY_STEAM_ID and is_nsfw_or_private_game(game)
 
 
 def should_hide_for_public_family(game, owner_steam_id):
@@ -650,6 +783,10 @@ def remove_private_jorge_ownership(games):
     removed_count = 0
 
     for game in games:
+        if is_globally_hidden_game(game):
+            removed_count += 1
+            continue
+
         owners = game.get("owners") or [{
             "name": game.get("owner", "Unknown"),
             "steamId": game.get("ownerSteamId"),
@@ -822,8 +959,9 @@ def home():
             "/api/library-enriched-stream",  # Auto-loads family when steamid == MY_STEAM_ID
             "/api/family-library-enriched",
         ],
-        "hiddenGamesFilterEnabled": bool(HIDDEN_APPIDS),
-        "hiddenGamesConfigured": len(HIDDEN_APPIDS),
+        "database": "postgresql" if DATABASE_URL else "sqlite",
+        "hiddenAppIdsConfigured": len(HIDDEN_APPIDS),
+        "hiddenGameNamesConfigured": len(HIDDEN_GAME_NAMES),
     })
 
 
@@ -1101,7 +1239,7 @@ def library_enriched_stream():
                         catalog_game = enrich_game(appid, name)
                         total_enriched_count += 1
 
-                    if should_hide_for_public_family(catalog_game, member_steam_id):
+                    if should_hide_for_public_view(catalog_game, member_steam_id):
                         print(
                             f"    Hidden from public family view: {name} ({appid})",
                             flush=True,
@@ -1190,7 +1328,8 @@ def library_enriched_stream():
                 "familyEnabled": family_enabled,
                 "familyName": family_name,
                 "members": members,
-                "hiddenGamesConfigured": len(HIDDEN_APPIDS),
+                "hiddenAppIdsConfigured": len(HIDDEN_APPIDS),
+                "hiddenGameNamesConfigured": len(HIDDEN_GAME_NAMES),
                 "privateGamesFiltered": private_filtered_count,
                 "totalGames": len(all_games),
                 "ownedGames": owned_games,
@@ -1299,7 +1438,7 @@ def family_library_enriched():
         total_enriched_count += enriched_count
 
         for game in enriched_games:
-            if should_hide_for_public_family(game, member_steam_id):
+            if should_hide_for_public_view(game, member_steam_id):
                 print(
                     f"    Hidden from public family view: {game.get('name')} ({game.get('appid')})",
                     flush=True,
@@ -1357,7 +1496,8 @@ def family_library_enriched():
         "familyEnabled": family_enabled,
         "familyName": "Los Sanchez" if family_enabled else None,
         "members": members,
-        "hiddenGamesConfigured": len(HIDDEN_APPIDS),
+        "hiddenAppIdsConfigured": len(HIDDEN_APPIDS),
+        "hiddenGameNamesConfigured": len(HIDDEN_GAME_NAMES),
         "privateGamesFiltered": private_filtered_count,
         "totalGames": len(all_games),
         "cachedGames": total_cached_count,
@@ -1370,5 +1510,11 @@ init_db()
 
 if __name__ == "__main__":
     print(f"DATABASE_PATH = {os.path.abspath(DATABASE_PATH)}", flush=True)
+    print(f"Database engine: {'PostgreSQL' if DATABASE_URL else 'SQLite'}", flush=True)
     print(f"Hidden AppIDs configured: {len(HIDDEN_APPIDS)}", flush=True)
-    app.run(debug=True, port=5000)
+    print(f"Hidden game names configured: {len(HIDDEN_GAME_NAMES)}", flush=True)
+    app.run(
+        debug=os.getenv("FLASK_DEBUG", "false").lower() == "true",
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", 5000)),
+    )
