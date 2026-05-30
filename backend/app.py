@@ -991,7 +991,7 @@ def library_enriched_stream():
 
     @stream_with_context
     def generate():
-        family_enabled = steam_id == MY_STEAM_ID
+        family_enabled = steam_id == MY_STEAM_ID or steam_id in LOS_SANCHEZ_FAMILY
         steam_ids_to_scan = LOS_SANCHEZ_FAMILY if family_enabled else [steam_id]
         family_name = "Los Sanchez" if family_enabled else None
 
