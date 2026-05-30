@@ -28,6 +28,7 @@ FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173")
 BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:5000")
 DATABASE_PATH = os.getenv("DATABASE_PATH", "data/steam_catalog.db")
 DATABASE_URL = os.getenv("DATABASE_URL")
+DEFAULT_HIDDEN_GAME_NAMES = os.getenv("DEFAULT_HIDDEN_GAME_NAMES")
 
 
 # Private local filter. Add Steam app IDs here through .env, for example:
@@ -42,89 +43,6 @@ HIDDEN_APPIDS = {
 # These names are hidden for everyone in the public/family view, even if the owner is not Jorge.
 # You can add more from Render Environment using:
 # HIDDEN_GAME_NAMES=Game One|Game Two|Game Three
-DEFAULT_HIDDEN_GAME_NAMES = [
-    "Academy Love Saga: Tennis Angels",
-    "The Agnietta ~The holy healer & the cursed dungeon~",
-    "AURA: Hentai Cards",
-    "Aurelia",
-    "Becoming a King",
-    "Broken Hearts Island",
-    "Cursed Armor",
-    "A Dream That Changes Everything",
-    "Dungeon Devotion",
-    "Goblin Dungeons",
-    "Heavy Hearts",
-    "Heroine Conquest",
-    "Monster Girl Island: Prologue",
-    "Nightmare Knight ~Sacred Maiden & Fallen Magic~",
-    "Quickie: A Love Hotel Story",
-    "Quickie: Fantasy Adventure",
-    "Souper Game",
-    "Succubus of Aphrodisia",
-    "Waifu Fighter",
-    "Witch's Dungeon",
-    "Yusha Prototype",
-    "Alchemy Quest",
-    "Awaken: Hentai Dice",
-    "Breeders of the Nephelym",
-    "Carnal Instinct",
-    "Claire's Quest",
-    "Coffee & Boobs",
-    "Colony City 27λ",
-    "Corporate Slave Succubus",
-    "Cursed Armor 2",
-    "Desert Stalker",
-    "Dreamcutter",
-    "Escape Dungeon",
-    "Escape Dungeon 2",
-    "Evenicle",
-    "FlipWitch - Forbidden Sex Hex",
-    "For the Queen",
-    "Fox Sex Farm",
-    "Happy Island Fantasy",
-    "Harem of Gods",
-    "Hypnotic Eyes",
-    "Kaiju Princess",
-    "Life With a College Girl",
-    "Love and Sex: Second Base",
-    "Love n Life: Happy Student",
-    "Love Sucks: Night One",
-    "Lust Academy Season 2",
-    "Lyndaria: Lust Adventure",
-    "Melia's Witch Test",
-    "Milfy Way: Space Orgasm",
-    "Mirai's Midnight Stream",
-    "Projekt: Passion",
-    "Projekt: Passion - Season 2",
-    "Qi Luo’s Erotic Life",
-    "Qi Luo's Erotic Life",
-    "Ravager",
-    "Rich Lady's Slave Role Play",
-    "RUMBLE BLAZING",
-    "Seeds of Chaos",
-    "SENRAN KAGURA Peach Beach Splash",
-    "A Sex Slave's Love Story",
-    "Sexy Mystic Survivors",
-    "SNOWBREAK",
-    "Subverse",
-    "SUCCUBUS",
-    "Succubus: The Lustborn Curse",
-    "Sword x Hime",
-    "Take Me To The Dungeon!!",
-    "Tales of the Moon",
-    "Tame It!",
-    "Third Crisis",
-    "Treasure of Nadia",
-    "Tropical Monster Girls",
-    "Umbronomicon",
-    "VoidBound",
-    "Wedding Witch",
-    "Wicked Island",
-    "Wings of Seduction : Bust 'em out!",
-    "Yarimono",
-    "Yoshima: Hentai Simulator",
-    "Zetria",
-]
 
 def normalize_game_name(value):
     return " ".join(str(value or "").casefold().replace("’", "'").split())
@@ -132,8 +50,8 @@ def normalize_game_name(value):
 
 HIDDEN_GAME_NAMES = {
     normalize_game_name(name)
-    for name in DEFAULT_HIDDEN_GAME_NAMES
-    if str(name).strip()
+    for name in os.getenv("HIDDEN_GAME_NAMES", "").split("|")
+    if name.strip()
 }
 
 # Extra names can be provided in Render/local .env with a pipe separator.
