@@ -53,13 +53,21 @@ function App() {
     return saved ? JSON.parse(saved) : {};
   });
 
+  function getUserPlaytimeHours(game) {
+    return Number(game.userPlaytimeHours) || 0;
+  }
+
+  function getUserStatus(game) {
+    return getUserPlaytimeHours(game) > 0 ? "Played" : "Backlog";
+  }
+
   const totalHours = games.reduce(
-    (sum, game) => sum + (Number(game.playtimeHours) || 0),
+    (sum, game) => sum + getUserPlaytimeHours(game),
     0
   );
 
-  const playedCount = games.filter((game) => game.status === "Played").length;
-  const backlogCount = games.filter((game) => game.status === "Backlog").length;
+  const playedCount = games.filter((game) => getUserStatus(game) === "Played").length;
+  const backlogCount = games.filter((game) => getUserStatus(game) === "Backlog").length;
 
   const filteredGames = games
     .filter((game) => {
@@ -67,14 +75,14 @@ function App() {
 
       return (
         (sourceFilter === "All" || game.source === sourceFilter) &&
-        (statusFilter === "All" || game.status === statusFilter) &&
+        (statusFilter === "All" || getUserStatus(game) === statusFilter) &&
         (interestFilter === "All" || gameInterest === interestFilter) &&
         game.name.toLowerCase().includes(search.toLowerCase())
       );
     })
     .sort((a, b) => {
       if (sortBy === "playtime") {
-        return (b.playtimeHours || 0) - (a.playtimeHours || 0);
+        return getUserPlaytimeHours(b) - getUserPlaytimeHours(a);
       }
 
       if (sortBy === "steamReviewPercent") {
@@ -92,17 +100,35 @@ function App() {
     window.location.href = `${API_URL}/auth/steam`;
   }
 
+  function upsertGames(updatedGames) {
+    setGames((currentGames) => {
+      const gamesByAppId = new Map(
+        currentGames.map((game) => [String(game.appid), game])
+      );
+
+      updatedGames.forEach((updatedGame) => {
+        const key = String(updatedGame.appid);
+        const existingGame = gamesByAppId.get(key) || {};
+        gamesByAppId.set(key, { ...existingGame, ...updatedGame });
+      });
+
+      const nextGames = Array.from(gamesByAppId.values()).sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+
+      if (libraryKey) {
+        localStorage.setItem(libraryKey, JSON.stringify(nextGames));
+      }
+
+      return nextGames;
+    });
+  }
+
   function fetchMyLibrary() {
     if (!steamId || isFetchingLibrary) return;
 
     setIsFetchingLibrary(true);
-    setGames([]);
-    setLibraryMeta(null);
-    setHasFetchedLibrary(false);
     setSelectedGame(null);
-
-    if (libraryKey) localStorage.removeItem(libraryKey);
-    if (libraryMetaKey) localStorage.removeItem(libraryMetaKey);
 
     setFetchProgress({
       stage: "starting",
@@ -126,6 +152,54 @@ function App() {
         ...current,
         ...progress,
       }));
+    });
+
+    eventSource.addEventListener("basic-games", (event) => {
+      const data = JSON.parse(event.data);
+      const basicGames = (data.games || []).sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+
+      const meta = {
+        steamId,
+        catalogVersion: "basic",
+        lastFetched: new Date().toISOString(),
+        totalGames: data.totalGames || basicGames.length,
+        ownedGames: data.ownedGames || 0,
+        familyGames: data.familyGames || 0,
+        familyEnabled: Boolean(data.familyEnabled),
+        familyName: data.familyName || null,
+        familyMembers: data.members || data.familyMembers || [],
+        failedFamilyMembers: (data.members || []).filter((member) => !member.loaded),
+        cachedGames: 0,
+        newlyEnrichedGames: 0,
+        hiddenGamesConfigured: data.hiddenGamesConfigured || 0,
+        privateGamesFiltered: data.privateGamesFiltered || 0,
+      };
+
+      localStorage.setItem(libraryKey, JSON.stringify(basicGames));
+      localStorage.setItem(libraryMetaKey, JSON.stringify(meta));
+
+      setGames(basicGames);
+      setLibraryMeta(meta);
+      setHasFetchedLibrary(true);
+    });
+
+    eventSource.addEventListener("game-updated", (event) => {
+      const data = JSON.parse(event.data);
+      const updatedGame = data.game;
+
+      if (!updatedGame) return;
+
+      upsertGames([updatedGame]);
+
+      setSelectedGame((currentSelectedGame) => {
+        if (!currentSelectedGame || currentSelectedGame.appid !== updatedGame.appid) {
+          return currentSelectedGame;
+        }
+
+        return { ...currentSelectedGame, ...updatedGame };
+      });
     });
 
     eventSource.addEventListener("complete", (event) => {
@@ -218,7 +292,7 @@ function App() {
         name: game.name,
         interest: interestByGame[game.appid] || "Undecided",
         status: game.status,
-        playtime: game.playtime,
+        playtime: game.userPlaytime || "0h",
         genres: game.genres || [],
         steamReviewPercent: game.steamReviewPercent,
         metacritic: game.metacritic,
@@ -264,7 +338,7 @@ function App() {
 
     games.forEach((game) => {
       const interest = interestByGame[game.appid] || "Undecided";
-      const playtimeHours = Number(game.playtimeHours) || 0;
+      const playtimeHours = getUserPlaytimeHours(game);
 
       let weight = 0;
 
@@ -296,7 +370,7 @@ function App() {
     const metacritic = Number(game.metacritic) || 0;
     const steamReviewPercent = Number(game.steamReviewPercent) || 0;
     const steamReviewTotal = Number(game.steamReviewTotal) || 0;
-    const playtimeHours = Number(game.playtimeHours) || 0;
+    const playtimeHours = getUserPlaytimeHours(game);
     const avgBeatHours = parseHours(game.avgBeat);
 
     if (interest === "Not Interested" || interest === "Completed") return -999;
@@ -705,7 +779,7 @@ function App() {
                   <div className="content">
                     <div className="card-top">
                       <h2>{game.name}</h2>
-                      <span>{game.status}</span>
+                      <span>{getUserStatus(game)}</span>
                     </div>
 
                     <p>{game.type}</p>
@@ -713,7 +787,7 @@ function App() {
                     <div className="stats">
                       <span>{getInterestLabel(gameInterest)}</span>
                       <span>Beat: {game.avgBeat}</span>
-                      <span>Played: {game.playtime}</span>
+                      <span>Your played: {game.userPlaytime || "0h"}</span>
                       <span>{game.source}</span>
                       {game.owner && <span>Owner: {game.owner}</span>}
                     </div>
@@ -774,7 +848,7 @@ function App() {
 
             <div className="detail-list">
               <p>
-                <strong>Status:</strong> {selectedGame.status}
+                <strong>Status:</strong> {getUserStatus(selectedGame)}
               </p>
               <p>
                 <strong>Source:</strong> {selectedGame.source || "Owned"}
@@ -783,7 +857,7 @@ function App() {
                 <strong>Owner:</strong> {selectedGame.owner || "Me"}
               </p>
               <p>
-                <strong>Played:</strong> {selectedGame.playtime}
+                <strong>Your played:</strong> {selectedGame.userPlaytime || "0h"}
               </p>
               <p>
                 <strong>Genres:</strong>{" "}

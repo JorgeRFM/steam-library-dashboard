@@ -815,9 +815,11 @@ def enrich_game(appid, name):
     return game
 
 
-def merge_user_game(steam_game, catalog_game, source="Owned", owner="Me", owner_steam_id=None):
+def merge_user_game(steam_game, catalog_game, source="Owned", owner="Me", owner_steam_id=None, requesting_steam_id=None):
     appid = steam_game["appid"]
     playtime_hours = round((steam_game.get("playtime_forever", 0) / 60), 1)
+    is_requesting_user = str(owner_steam_id) == str(requesting_steam_id) if requesting_steam_id else source == "Owned"
+    user_playtime_hours = playtime_hours if is_requesting_user else 0
 
     return {
         **catalog_game,
@@ -826,10 +828,82 @@ def merge_user_game(steam_game, catalog_game, source="Owned", owner="Me", owner_
         "source": source,
         "owner": owner,
         "ownerSteamId": owner_steam_id,
+        # playtimeHours is the visible playtime for the current shown owner/copy.
         "playtime": f"{playtime_hours}h",
         "playtimeHours": playtime_hours,
-        "status": "Backlog" if playtime_hours == 0 else "Played",
+        # userPlaytimeHours is only the logged-in/requesting user's playtime.
+        # Use this for totals, recommendations, and playtime sorting.
+        "userPlaytime": f"{user_playtime_hours}h",
+        "userPlaytimeHours": user_playtime_hours,
+        "status": "Backlog" if user_playtime_hours == 0 else "Played",
     }
+
+
+def make_basic_catalog_game(appid, name):
+    return {
+        "appid": appid,
+        "name": name or "Unknown",
+        "type": "Loading...",
+        "genres": [],
+        "categories": [],
+        "rating": "Loading...",
+        "metacritic": "Unknown",
+        "avgBeat": "Loading...",
+        "hltb": {},
+        "steamReviewSummary": "Loading...",
+        "steamReviewPercent": None,
+        "steamReviewTotal": None,
+        "releaseDate": "Unknown",
+        "storeUrl": f"https://store.steampowered.com/app/{appid}",
+        "image": f"https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/{appid}/header.jpg",
+        "requiredAge": 0,
+        "contentDescriptors": {},
+        "privacyScanVersion": 0,
+        "catalogUpdatedAt": None,
+        "isEnriched": False,
+    }
+
+
+def merge_game_into_collection(all_games_by_appid, appid, merged_game, member_steam_id, owner, source, is_requesting_user):
+    if appid not in all_games_by_appid:
+        merged_game["owners"] = [{
+            "name": owner,
+            "steamId": member_steam_id,
+            "source": source,
+        }]
+        merged_game["ownerCount"] = 1
+        all_games_by_appid[appid] = merged_game
+        return
+
+    existing_game = all_games_by_appid[appid]
+
+    owners = existing_game.get("owners", [])
+    if not owners:
+        owners = [{
+            "name": existing_game.get("owner", "Unknown"),
+            "steamId": existing_game.get("ownerSteamId"),
+            "source": existing_game.get("source", "Unknown"),
+        }]
+
+    if not any(owner_info.get("steamId") == member_steam_id for owner_info in owners):
+        owners.append({
+            "name": owner,
+            "steamId": member_steam_id,
+            "source": source,
+        })
+
+    # Prefer the requesting user's own copy when duplicate exists, so displayed
+    # playtime/status are Jorge's instead of a family member's.
+    target_game = merged_game if is_requesting_user else existing_game
+    target_game["owners"] = owners
+    target_game["ownerCount"] = len(owners)
+
+    # Preserve the requesting user's hours if they were already found earlier.
+    if not is_requesting_user:
+        target_game["userPlaytimeHours"] = existing_game.get("userPlaytimeHours", 0)
+        target_game["userPlaytime"] = existing_game.get("userPlaytime", "0h")
+
+    all_games_by_appid[appid] = target_game
 
 
 def enrich_steam_games(steam_games, source="Owned", owner="Me", owner_steam_id=None):
@@ -867,6 +941,7 @@ def enrich_steam_games(steam_games, source="Owned", owner="Me", owner_steam_id=N
                 source=source,
                 owner=owner,
                 owner_steam_id=owner_steam_id,
+                requesting_steam_id=owner_steam_id,
             )
         )
 
@@ -1114,6 +1189,65 @@ def library_enriched_stream():
                 })
                 return
 
+            # Send a fast basic version first, so the frontend can render/search immediately.
+            basic_games_by_appid = {}
+
+            for member_library in member_libraries:
+                member_steam_id = member_library["steamId"]
+                owner_name = member_library["name"]
+                steam_games = member_library["games"]
+                is_requesting_user = member_steam_id == steam_id
+                source = "Owned" if is_requesting_user else "Steam Family"
+                owner = "Me" if is_requesting_user else owner_name
+
+                for steam_game in steam_games:
+                    appid = steam_game["appid"]
+                    name = steam_game.get("name", "Unknown")
+                    basic_catalog_game = make_basic_catalog_game(appid, name)
+
+                    # Only exact/manual hidden filters are safe before enrichment.
+                    # The stronger NSFW/privacy filter still runs during enrichment after Steam metadata is loaded.
+                    if is_globally_hidden_game(basic_catalog_game):
+                        continue
+
+                    basic_merged_game = merge_user_game(
+                        steam_game=steam_game,
+                        catalog_game=basic_catalog_game,
+                        source=source,
+                        owner=owner,
+                        owner_steam_id=member_steam_id,
+                        requesting_steam_id=steam_id,
+                    )
+
+                    merge_game_into_collection(
+                        all_games_by_appid=basic_games_by_appid,
+                        appid=appid,
+                        merged_game=basic_merged_game,
+                        member_steam_id=member_steam_id,
+                        owner=owner,
+                        source=source,
+                        is_requesting_user=is_requesting_user,
+                    )
+
+            basic_games = list(basic_games_by_appid.values())
+            basic_games, private_filtered_count = remove_private_jorge_ownership(basic_games)
+            basic_games.sort(key=lambda game: game["name"].lower())
+
+            owned_games = sum(1 for game in basic_games if game.get("source") == "Owned")
+            family_games = sum(1 for game in basic_games if game.get("source") == "Steam Family")
+
+            yield sse_event("basic-games", {
+                "steamId": steam_id,
+                "familyEnabled": family_enabled,
+                "familyName": family_name,
+                "members": members,
+                "privateGamesFiltered": private_filtered_count,
+                "totalGames": len(basic_games),
+                "ownedGames": owned_games,
+                "familyGames": family_games,
+                "games": basic_games,
+            })
+
             # Second pass: enrich/cache each game and dedupe by appid.
             for member_library in member_libraries:
                 member_steam_id = member_library["steamId"]
@@ -1188,36 +1322,22 @@ def library_enriched_stream():
                         source=source,
                         owner=owner,
                         owner_steam_id=member_steam_id,
+                        requesting_steam_id=steam_id,
                     )
 
-                    if appid not in all_games_by_appid:
-                        all_games_by_appid[appid] = merged_game
-                    else:
-                        existing_game = all_games_by_appid[appid]
+                    merge_game_into_collection(
+                        all_games_by_appid=all_games_by_appid,
+                        appid=appid,
+                        merged_game=merged_game,
+                        member_steam_id=member_steam_id,
+                        owner=owner,
+                        source=source,
+                        is_requesting_user=is_requesting_user,
+                    )
 
-                        owners = existing_game.get("owners", [])
-                        if not owners:
-                            owners = [{
-                                "name": existing_game.get("owner", "Unknown"),
-                                "steamId": existing_game.get("ownerSteamId"),
-                                "source": existing_game.get("source", "Unknown"),
-                            }]
-
-                        if not any(owner_info.get("steamId") == member_steam_id for owner_info in owners):
-                            owners.append({
-                                "name": owner,
-                                "steamId": member_steam_id,
-                                "source": source,
-                            })
-
-                        existing_game["owners"] = owners
-                        existing_game["ownerCount"] = len(owners)
-
-                        # Prefer the requesting user's owned copy when duplicate exists.
-                        if is_requesting_user:
-                            merged_game["owners"] = owners
-                            merged_game["ownerCount"] = len(owners)
-                            all_games_by_appid[appid] = merged_game
+                    yield sse_event("game-updated", {
+                        "game": all_games_by_appid[appid],
+                    })
 
                     yield sse_event("progress", {
                         "stage": "game-done",
